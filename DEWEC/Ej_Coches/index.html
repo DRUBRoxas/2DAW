@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="objetos1.js"></script>
+    <title>Coche</title>
+  </head>
+  <body>
+    <form id="formul">
+      <h1>Coches</h1>
+      <label for="marca">Marca</label>
+      <input type="Marca" id="marca" name="marca" />
+      <br />
+      <br />
+      <label for="Modelo">Modelo</label>
+      <input type="Modelo" id="modelo" name="modelo" />
+      <br />
+      <br />
+      <label for="AñoMat">AñoMat</label>
+      <input type="añomat" id="añomat" name="añomat" />
+      <br />
+      <br />
+      <label for="Color">Color</label>
+      <input type="col" id="color" name="color" />
+      <br />
+      <br />
+      <input type="button" value="Matricular" onclick="Matricular()" />
+      <br />
+      <br />
+    </form>
+    <table border="1px">
+      <thead>
+        <td>Matricula</td>
+        <td>Marca</td>
+        <td>Modelo</td>
+        <td>Año</td>
+        <td>Color</td>
+      </thead>
+      <tbody id="coche"></tbody>
+    </table>
+
+    <form id="formulP">
+      <h1>Personas</h1>
+      <label for="Nombre">Nombre</label>
+      <input type="nombre" id="nombre" name="nombre" />
+      <br />
+      <br />
+      <label for="Apellidos">Apellidos</label>
+      <input type="apellido" id="apellido" name="apellido" />
+      <br />
+      <br />
+      <label for="Edad">Edad</label>
+      <input type="edad" id="edad" name="edad" />
+      <br />
+      <br />
+      <label for="Sexo">Sexo</label>
+      <input type="sexo" id="sexo" name="sexo" />
+      <br />
+      <br />
+      <input type="button" value="Guardar Usuario" onclick="Guardar()" />
+      <br />
+      <br />
+    </form>
+    <table border="1px">
+      <thead>
+        <td>DNI</td>
+        <td>Nombre</td>
+        <td>Apellido</td>
+        <td>Edad</td>
+        <td>Sexo</td>
+      </thead>
+      <tbody id="persona"></tbody>
+    </table>
+  </body>
+</html>

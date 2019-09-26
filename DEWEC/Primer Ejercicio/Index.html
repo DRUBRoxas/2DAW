@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Formulario_DNI</title>
+    <script src="main.js"></script>
+</head>
+<body>
+    <form>
+    <label for="dni">DNI</label>  
+    <input type="dni" id="dni" maxlength="9" name="DNI">
+    </br> 
+    </br>
+    <input type="button" value="Comprobar DNI" onclick="CompruebaDNI()"/>
+    </br>
+    </br>
+    <label for="edad">EDAD</label>  
+    <input type="edad" id="edad" maxlength="2" name="edad">
+    </br> 
+    </br>
+    <input type="button" value="Comprobar"
+    onclick="MayorEdad()"/>
+    </br>
+    </br>
+    <label for="cadena">CADENA</label>  
+    <input type="cadena" id="cadena" name="cadena">
+    </br> 
+    </br>
+    <input type="button" value="Comprobar"
+    onclick="EstaVacia()"/>
+    </br>
+    </br>
+    <label for="Primo">Numeros Primos</label>  
+    <input type="primo" id="numprim" name="primo">
+    </br> 
+    </br>
+    <input type="button" value="Comprobar"
+    onclick="Primos()"/>
+    </br>
+    </br>
+    <label for="Div">Divisores</label>
+    <input type="div" id="div" name="div">
+    </br>
+    </br>
+    <input type="button" value="Comprobar" onclick="Divisores()"/> 
+    </form>
+</body>
+</html>
