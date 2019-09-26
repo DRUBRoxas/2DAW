@@ -1,64 +1,74 @@
 <!DOCTYPE html>
-<html lang="es">
-    <head>
-        <title>titule</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <body>
-        <h1>Scripts en php</h1>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Introducción rápida a la sintaxis y estructura de PHP</h1>
+    <?php
+        echo "Hola <strong>Pepe</strong>";
+        $a = 20;
+        echo "</br>";
+        echo "El valor de la variable a es =" . $a . "</br>";
+        echo "El valor de la variables a es = $a" . "<br>";
+        echo 'El valor de la variable a es = $a' . "</br>";
+        var_dump($a);
+        var_dump($b);
+        $a = "Esto es una cadena";
+        echo "El valor de la variable a es $a";
+        var_dump($a);
+    ?>
 
-        <?php
-echo "aló <strong>polisía</strong>";
-$a = 20;
-echo "<br/> el valor de la variable a es = " . $a;
-echo "<br/> el valor de la variable a es = $a" . "<br/>";
-var_dump($a);
-var_dump($b);
-$a = "esto es una cadena";
-echo ("El valor de la variable a es " . $a . "<br/>");
-var_dump($a);
+<h1>Ámbito de las variables</h1>
+<?php
+    $x = 5;
+    $y = 7;
+    echo "La variable x = $x y la variable y = $y";
+    suma();
+    function suma()
+    {
+        global $x;
+        //$x = 1;
+        echo ("La variable x en la función vale $x");
+    }
+
 ?>
-        <h1>Ámbito de las variables</h1>
-        <?php
-$x = 5;
-$y = 7;
-echo "la variable x=" . $x . " y la variable y=" . $y . "<br/>";
-Suma();
-function Suma()
-{
-    //global $x;
-    //variable local
-    $x = 1;
-    echo "la variable x en la función vale $x";
-}
-echo "<h1>IF</h1>";
+<?php
+echo "<h1>Bucles</h1></br>";
 if ($x == 5) {
-    echo "valor bueno";
+    echo "Valor bueno";
 } else {
-    echo "valor malo";
+    echo "Malo";
 }
 
 ?>
-        <?php
-if (true):
+<?php if (true): ?>
+<h1>Verdadero1</h1>
+<h2>Verdadero2</h2>
+<?php else: ?>
+<h1>Falso1</h1>
+<h2>Falso2</h2>
+<?php endif ?>
 
+<?php
+    for ($i = 0; $i < 10; $i++) {
+        echo "i= $i " . "</br>";
+    }
+    //Aunque los arrays los veremos con detalle creemos uno para utilizar el foreach
+    $habitantes=["jaén"=>80000,"Córdoba"=>110000];
+    foreach ($habitantes as $ciudad => $habitantes) {
+        echo $ciudad."=".$habitantes."</br>";
+    }
 ?>
-        <h1>hola</h1>
-        <h2>hola 2</h2>
-        <?php
-else:
+<?php
+    for ($i = 0; $i < 10; $i++) {
+        echo "hola ". $i;
 
-    echo "No";
-
-endif;
-echo ("<h1>Bucles</h1>");
-for ($i = 0; $i <= 9; $i++) {
-    echo ("<p> Te he dicho hola " . $i . " veces</p>");
-}
+    }
 ?>
 
-
-
-    </body>
+</body>
 </html>
