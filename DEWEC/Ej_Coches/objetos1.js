@@ -10,6 +10,7 @@ function creador() {
 }
 
 Coche = creador();
+var ArrayCoches = {};
 
 Coche.prototype.cambiarPropietario = function(propietario) {
   this.propietario = propietario;
@@ -19,7 +20,9 @@ Coche.prototype.pintar = function(color) {
   this.color = color;
 };
 
-Coche.prototype.Imprimir = function(coche) {};
+Coche.prototype.imprimirCoche = function(coche) {};
+
+
 
 function Matricular() {
   var marca = document.getElementById("marca").value;
@@ -27,28 +30,41 @@ function Matricular() {
   var añomat = document.getElementById("añomat").value;
   var color = document.getElementById("color").value;
 
-  if (marca == "" || modelo == "" || añomat == "" || color == "") {
+  if (marca == "" || modelo == "" || añomat == "" || color == "") 
+  {
     alert("Introduce los datos correctamente");
-  } else {
-    var c1 = new Coche(marca, modelo, añomat, color);
-
-    document.getElementById("coche").innerHTML +=
-      "<tr><td>" +
-      c1.mat +
-      "</td><td>" +
-      c1.marca +
-      "</td><td>" +
-      c1.modelo +
-      "</td><td>" +
-      c1.añomat +
-      "</td><td>" +
-      c1.color +
-      "</td></tr>";
-
+  } 
+  else 
+  {
+    var coche1 = new Coche(marca, modelo, añomat, color);
+    ArrayCoches.push(coche1);
     document.getElementById("formul").reset();
   }
 }
 
+function DeleteThis() {}
+function Imprimir() {
+  ArrayCoches.array.forEach(imprimirCoche);
+}
+function imprimirCoche(Coche) {
+  var c1 = Coche;
+  document.getElementById("coche").innerHTML +=
+    "<><td>" +
+    c1.mat +
+    "</td><td>" +
+    c1.marca +
+    "</td><td>" +
+    c1.modelo +
+    "</td><td>" +
+    c1.añomat +
+    "</td><td>" +
+    c1.color +
+    "</td><td>" +
+    <input type="button" value="Borrar" onclick="DeleteThis()" /> +
+    "</td></tr>";
+}
+
+/*
 //Objeto Persona
 function creadorP() {
   var dni = 0;
@@ -60,6 +76,7 @@ function creadorP() {
     this.sexo = sexo || "M";
   };
 }
+
 
 Persona = creadorP();
 
@@ -91,13 +108,4 @@ function Guardar() {
     document.getElementById("formulP").reset();
   } 
 }
-
-function DeleteThis() {}
-
-Persona.prototype.CumplirAños = function() {
-  this.edad++;
-};
-
-Persona.prototype.Imprimir = function() {
-  console.log(this);
-};
+*/
