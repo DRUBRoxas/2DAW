@@ -20,11 +20,8 @@ Coche.prototype.pintar = function(color) {
   this.color = color;
 };
 
-Coche.prototype.imprimirCoche = function(coche) {};
-
-
-
 function Matricular() {
+  alert("Holi");
   var marca = document.getElementById("marca").value;
   var modelo = document.getElementById("modelo").value;
   var añomat = document.getElementById("añomat").value;
@@ -63,49 +60,3 @@ function imprimirCoche(Coche) {
     <input type="button" value="Borrar" onclick="DeleteThis()" /> +
     "</td></tr>";
 }
-
-/*
-//Objeto Persona
-function creadorP() {
-  var dni = 0;
-  return function Persona(nombre, apellidos, edad, sexo) {
-    this.dni = dni++;
-    this.nombre = nombre || "";
-    this.apellidos = apellidos || "";
-    this.edad = edad || "";
-    this.sexo = sexo || "M";
-  };
-}
-
-
-Persona = creadorP();
-
-function Guardar() {
-  var ArrayPersonas = [];
-  var nombre = document.getElementById("nombre").value;
-  var apellidos = document.getElementById("apellido").value;
-  var edad = document.getElementById("edad").value;
-  var sexo = document.getElementById("sexo").value;
-
-  if (nombre == "" || apellidos == "" || edad == "" || sexo == "") {
-    alert("Introduce los datos correctamente");
-  } else {
-    var c1 = new Persona(nombre, apellidos, edad, sexo);
-
-    document.getElementById("persona").innerHTML +=
-      "<tr><td>" + c1.dni + "</td><td>" + ç;
-    c1.nombre +
-      "</td><td>" +
-      c1.apellidos +
-      "</td><td>" +
-      c1.edad +
-      "</td><td>" +
-      c1.sexo +
-      "</td><td>"+
-      <input type='button' value='Borrar' onclick='DeleteThis()'/>+
-      "</td></tr>";
-
-    document.getElementById("formulP").reset();
-  } 
-}
-*/
