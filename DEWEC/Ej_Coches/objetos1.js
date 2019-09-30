@@ -10,7 +10,7 @@ function creador() {
 }
 
 Coche = creador();
-var ArrayCoches = {};
+var ArrayCoches = [];
 
 Coche.prototype.cambiarPropietario = function(propietario) {
   this.propietario = propietario;
@@ -20,8 +20,8 @@ Coche.prototype.pintar = function(color) {
   this.color = color;
 };
 
-function Matricular() {
-  alert("Holi");
+function Matricular() 
+{
   var marca = document.getElementById("marca").value;
   var modelo = document.getElementById("modelo").value;
   var añomat = document.getElementById("añomat").value;
@@ -33,30 +33,40 @@ function Matricular() {
   } 
   else 
   {
-    var coche1 = new Coche(marca, modelo, añomat, color);
-    ArrayCoches.push(coche1);
+    var c1 = new Coche(marca, modelo, añomat, color);
+    ArrayCoches.push(c1);
     document.getElementById("formul").reset();
   }
 }
 
-function DeleteThis() {}
-function Imprimir() {
-  ArrayCoches.array.forEach(imprimirCoche);
+function DeleteThis(posicion)
+{
+  ArrayCoches.splice(posicion,1);
+  Imprimir();
 }
-function imprimirCoche(Coche) {
-  var c1 = Coche;
+
+
+function Imprimir() 
+{
+  document.getElementById("coche").innerHTML = "";
+  var i=0;
+  ArrayCoches.forEach(function imprimir(Coche){
+  i=i++;
   document.getElementById("coche").innerHTML +=
-    "<><td>" +
-    c1.mat +
+    "<tr><td>" +
+    Coche.mat +
     "</td><td>" +
-    c1.marca +
+    Coche.marca +
     "</td><td>" +
-    c1.modelo +
+    Coche.modelo +
     "</td><td>" +
-    c1.añomat +
+    Coche.añomat +
     "</td><td>" +
-    c1.color +
-    "</td><td>" +
-    <input type="button" value="Borrar" onclick="DeleteThis()" /> +
+    Coche.color +
+    "</td><td>"+
+    "<button type='button' onclick='DeleteThis("+i+")'>X</button>"+
     "</td></tr>";
+    
+  });
+  
 }
