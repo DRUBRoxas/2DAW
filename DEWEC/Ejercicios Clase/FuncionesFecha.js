@@ -142,8 +142,13 @@ function AniosCumplidos(fechanac)
   return edad;
 }
 
-Date.prototype.toString()=function DatetoString()
+Date.prototype.toString=function()
 {
-  var retorno= this.getDay+"/"+this.getMonth+"/"+this.getFullYear;
+  var dia=this.getDate();
+  dia=((dia<10)?"0":"")+dia
+  var mes=this.getMonth()+1;
+  mes=((mes<10)?"0":"")+mes
+  var year=this.getFullYear();
+  var retorno=dia+"/"+mes+"/"+year;
   return retorno;
 }

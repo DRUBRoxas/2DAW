@@ -1,0 +1,40 @@
+1) Numero Positivo entero
+   (^| )\d+( |$|\.  )
+
+2) Numero Decimal
+ \d+\.\d+
+
+3)Fichero Word
+^((\w| )+\.)+(doc|docx)$
+
+4) Imagen
+^((\w| )+\.)+(jpg|gif|png)$
+
+5) Numero Hexadecimal
+\d+([A-F]+)
+
+6) Nombre Completo (Minimo 2, empieza mayuscula, se puede poner guión en cada palabra)
+/[A-ZÁÉÍÓÚÑ][a-záéíóúñ-]+/
+
+7)No vacio
+.*
+
+8) Cadena Mayusculas
+[A-ZÁÉÍÓÚÑ]
+
+9)DNI
+/^\d{8}[a-zA-Z]$/7
+
+10)Teléfono movil español
+(\+34|0034)?[6|7]?([0-9]){8}
+
+11)MAC(aa:bb:cc:dd:ee:ff)
+(([0-9|A-F]{2})(\:|\-){5})([0-9|A-F]{2})(\:|\-)([0-9|A-F]{2})(\:|\-)([0-9|A-F]{2})(\:|\-)([0-9|A-F]{2})(\:|\-)([0-9|A-F]{2})
+
+12)IP
+^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$
+
+13)Matrícula de Coche
+
+14)CP
+^(?:0[1-9]\d{3}|[1-4]\d{4}|5[0-2]\d{3})$
