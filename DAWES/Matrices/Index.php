@@ -1,40 +1,41 @@
 <?php
-require_once '../../PHP20192020/Cargadores/cargarclases.php';
-
+require_once '../Cargadores/cargarclases.php';
 class Principal
 {
     public static function main()
     {
-        //Recorrer Matrices
-        //Unidimensional
+        //Recorrer matrices
+        //Unidimensionales 
         foreach (EjemplosMatrices::$nombres as $key => $value) {
-            echo $key . "..." . $value . "<br>";
+            echo $key."...".$value."</br>";
         }
-
         //Asociativa
-        foreach (EjemplosMatrices::$NombreEdad as $nombre => $edad) {
-            echo "el tipo" . $nombre . "tiene " . $edad . "años <br>";
+        foreach (EjemplosMatrices::$nombreedad as $nombre => $edad) {
+            echo "El tipo ".$nombre." tiene ".$edad." años</br>";
         }
-
-        //Elementos al final del array
-        EjemplosMatrices::$edades[100] = 5;
-        EjemplosMatrices::$edades[] = 89;
-
-        //Muestra la variable con toda su informacion (Se utiliza paraa depurar)
+        //Añadir elemento al final de un array
+        EjemplosMatrices::$edades[100]=5;
+        EjemplosMatrices::$edades[]=89;
         var_dump(EjemplosMatrices::$edades);
-
-        //Recorrer Matriz de objetos asociativa
-        foreach (EjemplosMatrices::MatrizObjetosAsociativa() as $nombre => $animal) {
-            echo "El animal con nombre " . $nombre . " Pertenece al género " . $animal->getGenero() . "<br>";
+        //Recorrer matriz de objetos asociativa
+        foreach (EjemplosMatrices::MatrizObjetoAsociativa() as $nombre => $animal) {
+            echo "El animal con nombre ".$nombre." pertenece al genero ".
+            $animal->getGenero()."</br>";
         }
 
-        //Matriz de 2 dimensiones
-        foreach (EjemplosMatrices::$comunidadesasoc as $comunidad => $matrizprovincias) {
-            echo "<br>la comunidad de " . $comunidad . " Tiene las siguientes provincias:<br>";
+        //acceso a elemento de matriz dos dimensiones
+        echo EjemplosMatrices::$comunidades[0][1];
+
+        //Recorrer matriz de dos dimensiones
+        foreach (EjemplosMatrices::$comunidadesasoc as $comunidad => $matrizprovincias)
+        {
+            echo "</br>La comunidad de ".$comunidad." tiene las siguientes provincias:</br>";
             foreach ($matrizprovincias as $provincia) {
-                echo "$provincia<br>";
+                echo "<blockquote>$provincia</blockquote></br>";
             }
         }
+
+
     }
 }
-principal::main();
+Principal::main();

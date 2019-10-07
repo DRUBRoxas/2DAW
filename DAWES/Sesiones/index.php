@@ -1,9 +1,10 @@
 <?php
 session_start();
-if (!isset($_SESSION["N1"])) {
-
-    $_SESSION["N1"] = 1;
+if(!isset($_SESSION["numero"]))
+{
+    $_SESSION["numero"]=1;
 }
-echo "el valor de n = " . $_SESSION["N1"];
+
+echo "El valor de n = ".$_SESSION["numero"];
 ?>
-<a href="suma.php">Suma</a>
+<a href="suma.php">Suma 1</a>

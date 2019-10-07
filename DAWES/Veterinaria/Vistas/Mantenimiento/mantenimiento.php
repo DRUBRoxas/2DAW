@@ -1,7 +1,7 @@
 <?php
-//Recogida de datos
-Sesion::iniciar();
-$sanimal=Sesion::leer("veterinaria");
+    //Recogida de datos
+    Sesion::iniciar();
+    $sanimal = Sesion::leer("veterinaria");
 ?>
 <h1>MANTENIMIENTO DE ANIMALES</h1>
 <table class="table">
@@ -16,17 +16,19 @@ $sanimal=Sesion::leer("veterinaria");
   </thead>
   <tbody>
      <?php
-        $sanimal->addAnimal(new Animal("111S","Luna","York", new DateTime('now')));
-        //Bucle para recorrer colección de animales
-        foreach ($sanimal->allAnimal() as $numerochip => $animal) {
-          echo "<tr>";
-          echo "<td>".$numerochip."</td>";
-          echo "<td>".$animal->getNombre()."</td>";
-          echo "<td>".$animal->getRaza()."</td>";
-          echo "<td>".$animal->getFechaNacimiento()->format('Y-m-d H:i:s')."</td>";
-          echo "</tr>";
+         //$sanimal->addAnimal(new Animal("111S","Luna","York", new DateTime('now')));
+         //Bucle para recorrer colección de animales
+         if ($sanimal->allAnimal() != null) {
+             foreach ($sanimal->allAnimal() as $numerochip => $animal) {
+                 echo "<tr>";
+                 echo "<td>" . $numerochip . "</td>";
+                 echo "<td>" . $animal->getNombre() . "</td>";
+                 echo "<td>" . $animal->getRaza() . "</td>";
+                 echo "<td>" . $animal->getFechaNacimiento()->format('Y-m-d H:i:s') . "</td>";
+                 echo "</tr>";
 
-        }
+             }
+         }
      ?>
   </tbody>
 </table>

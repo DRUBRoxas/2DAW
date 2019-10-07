@@ -1,5 +1,6 @@
 <?php
 session_start();
-
-$_SESSION["N1"] += 1;
+$_SESSION["numero"]+=1;
 header("location:index.php");
+?>
+

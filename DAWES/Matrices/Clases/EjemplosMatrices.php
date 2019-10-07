@@ -1,42 +1,30 @@
 <?php
-
 class EjemplosMatrices
 {
     //Matrices unidimensionales
-    
-    //Matriz de números
-    public static $edades=[2,8,39,44];
-
-    //Matriz de Cadenas
+    //Matriz de números indexada
+    public static $edades=[2,8,39,45];
+    //Matriz de cadenas indexada
     public static $nombres=["Antonio","Juan","Manuel","Luis"];
-    
     //Matriz asociativa
-    public static $NombreEdad=["Antonio"=>2,"Juan"=>8,"Manuel"=>39,"Luis"=>45];
-
+    public static $nombreedad=["Antonio"=>2,"Juan"=>8,"Manuel"=>39,"Luis"=>45];
     //Matriz de objetos indexada
     public static function MatrizObjetoIndexada()
     {
-        return $animales=[New Animal("Gato","felino"),new Animal("Raton","Roedor")];
+        return $animales=[new Animal("gato","felino"),new Animal("ratón","roedor")];
     }
-   
-    //Matriz de Objetos asociativa
-    public static function MatrizObjetosAsociativa()
+    //Matriz de objetos asociativa
+    public static function MatrizObjetoAsociativa()
     {
-        return ["gato"=>new Animal("Gato","felino"),new Animal("Raton","Roedor")];
+        return ["gato"=>new Animal("gato","felino"),"ratón"=>new Animal("ratón","roedor")];
     }
-
     //Matriz asociativa/indexada liada
     public static $lio=[1=>20,5=>45,655=>12];
 
-
-    //Matrices Multidimensionales
+    //Matrices multidimensionales
     //Matriz indexada
-    public static $Comunidades=[["Jaén","Cordoba","Sevilla"],["Madrid"]];
-
+    public static $comunidades=[["Jaén","Córdoba","Sevilla"],["Madrid"]];
     //Matriz asociativa
-    public static $comunidadesasoc=["Andalucía" =>["Jaen","Cordoba"],"Madrid"=>["Madrid"]];
-
+    public static $comunidadesasoc=["Andalucía"=>["Jaén","Córdoba"],"Madrid"=>["Madrid"]];
 
 }
-
-?>

@@ -1,4 +1,6 @@
 <?php
+    Sesion::iniciar();
+    $sanimal=Sesion::leer("veterinaria");
     //Si he realizado un submit
     if(!empty($_POST))
     {
@@ -6,8 +8,9 @@
         $nombre=$_POST["nombre"];
         $raza=$_POST["raza"];
         $fnacimiento=$_POST["fechanacimiento"];
-        $nuevoAnimal=new Animal($nchip,$nombre,$raza,$fnacimiento);
+        $nuevoAnimal=new Animal($nchip,$nombre,$raza,new DateTime($fnacimiento));
         $sanimal->addAnimal($nuevoAnimal);
+        Sesion::escribir("veterinaria",$sanimal);
     }
 ?>
 <form action="" method="post">
@@ -18,3 +21,5 @@ Fecha de Nacimiento:<input type="date" name="fechanacimiento" class="form-contro
 <br>
 <input type="submit" value="Enviar" class="btn btn-primary">
 </form>
+<br>
+<a href="?menu=mantenimiento">Volver a mantenimiento</a>
