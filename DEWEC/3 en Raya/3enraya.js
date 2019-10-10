@@ -65,7 +65,7 @@ function comenzar(){
         j2.style.border="none"
     }else
     {
-        j1.style.border="1px solid green"
+        j1.style.border="none"
         j2.style.border="1px solid green"
     }
     tbody=document.getElementById("juego");
