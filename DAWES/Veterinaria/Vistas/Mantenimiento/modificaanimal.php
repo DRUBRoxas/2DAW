@@ -1,10 +1,10 @@
 <?php
-    Sesion::iniciar();
-    $sanimal = Sesion::leer("veterinaria");
-    $valida = new Validacion();
-    //Si he realizado un submit
-    if (!empty($_POST)) {
-        //Validamos los datos
+Sesion::iniciar();
+$sanimal=Sesion::leer('veterinaria');
+$valida=new Validacion();
+if(isset($_POST['grabar']))
+{
+     //Validamos los datos
         //Validar el número de chip 99-9999-AA
         $valida->Patron('numerochip', '/^[0-9]{2}\-[0-9]{4}\-[A-Z]{2}$/');
         //Valida el nombre longitud mínima de 5 y máxima de 20
@@ -15,7 +15,8 @@
         $valida->ValidaConFuncion('fechanacimiento', 'FuncionesValidacion::ValidaFechaNacimiento',
             "La fecha de nacimiento debe ser igual o anterior a la actual");
 
-        if ($valida->ValidacionPasada()) {
+        if ($valida->ValidacionPasada())
+        {
 
             $nchip = $_POST["numerochip"];
             $nombre = $_POST["nombre"];
@@ -25,7 +26,22 @@
             $sanimal->addAnimal($nuevoAnimal);
             Sesion::escribir("veterinaria", $sanimal);
         }
-    }
+        header("location:?menu=mantenimiento");
+}
+
+if(isset($_POST['cancelar']))
+{
+    header("location:?menu=mantenimiento");
+}
+else
+{
+    $animal=$sanimal->findAnimalById($_GET['id']);
+    $_POST['numerochip']=$animal->getNumeroChip();
+    $_POST['nombre']=$animal->getNombre();
+    $_POST['raza']=$animal->getRaza();
+    $_POST['fechanacimiento']=$animal->getFechaNacimiento()->format('Y-m-d');
+}
+
 ?>
 <form action="" method="post">
 Nº Chip:<input type="text" name="numerochip" class="form-control" value="<?= $valida->getValor('numerochip') ?>"><br>
@@ -37,7 +53,7 @@ Raza:<input type="text" name="raza" class="form-control" value="<?= $valida->get
 Fecha de Nacimiento:<input type="date" name="fechanacimiento" class="form-control" value="<?= $valida->getValor('fechanacimiento') ?>">
 <br>
 <?= $valida->ImprimirError('fechanacimiento') ?>
-<input type="submit" value="Enviar" class="btn btn-primary">
+<input type="submit" value="Grabar" name="grabar" class="btn btn-primary">
+<input type="submit" value="Cancelar" name="cancelar" class="btn btn-primary">
 </form>
 <br>
-<a href="?menu=mantenimiento">Volver a mantenimiento</a>
