@@ -15,4 +15,7 @@ if (isset($_GET['menu'])) {
     if ($_GET['menu'] == "modificaanimal") {
         require_once './Vistas/Mantenimiento/modificaanimal.php';
     }
+    if ($_GET['menu'] == "login") {
+        require_once './Vistas/Login/autentifica.php';
+    }
 }
