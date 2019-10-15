@@ -1,0 +1,43 @@
+#nombre,#puntosCordura{
+    background-color: orange;
+    
+}
+
+#nombre:focus:invalid,#puntosCordura:focus:invalid{
+    background-color: red;
+    
+}
+
+select {
+ 
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background-color: beige;
+ }
+
+ input[type=submit] {
+
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border: 0;
+    background-color: orange;
+    text-transform: capitalize;
+ }
+
+ a {
+    color : black;
+    text-decoration: none;
+    
+}
+
+#dificultad:checked::after{ 
+    content: "";
+    background-image: url(./cthulhu.png);
+    width:100px;
+    height: 100px;
+    display: inline-block;
+    background-size: 50px;
+    background-repeat: no-repeat;
+    margin-left: 20px;
+}
