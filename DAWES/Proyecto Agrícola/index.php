@@ -1,7 +1,11 @@
 <?php
 require_once '../Cargadores/cargarclases.php';
 require_once '../Cargadores/cargarhelper.php';
-
+Sesion::iniciar();
+if (!Sesion::leer("sagricultor")) {
+    $sagricultor = new Sagricultor("SAgricultores S.L.", "14-666-P");
+    Sesion::escribir("Sagricultor", $sagricultor);
+}
 class Principal
 {
     public static function main()

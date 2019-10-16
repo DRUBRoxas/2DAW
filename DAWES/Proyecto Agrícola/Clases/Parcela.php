@@ -16,4 +16,9 @@ class Parcela
         $this->num_poligono = $num_poligono;
         $this->Num_Olivos = $Num_Olivos;
     }
+
+    public function addActividad(Actividad $nuevaAct)
+    {
+        $this->Actividades[$nuevaAct->getId_act()] = $nuevaAct;
+    }
 }

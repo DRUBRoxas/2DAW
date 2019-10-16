@@ -63,7 +63,7 @@ function validarEmail() {
 }
 
 
-function ValidarForm() {
+function ValidarFormAgri() {
     ValidaDNI();
     validaNomApe();
     validarEmail();
