@@ -1,0 +1,25 @@
+textarea
+{
+    display: inline-block;
+    resize: none;
+    height: 300px;
+    
+}
+select
+{
+    display: inline-block;
+    height: 300px;
+    width: 150px;
+}
+fieldset
+{
+    display: block;
+
+}
+button
+{
+  text-align: center;  
+    position: relative;    
+    top: -200px;
+
+}
