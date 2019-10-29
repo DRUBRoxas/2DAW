@@ -16,7 +16,7 @@ class Usuario
 
     public static function getUsuarios()
     {
-        return [new Usuario("manueh@agri.es", "1234", ["Administrador"])];
+        return [new Usuario("manu@agri.es", "1234", ["Administrador"])];
     }
 
     /**

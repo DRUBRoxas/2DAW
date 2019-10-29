@@ -15,4 +15,12 @@ if (isset($_GET['menu'])) {
     if ($_GET['menu'] == "modificaagricultor") {
         require_once './Vistas/Mantenimiento/modificaagricultor.php';
     }
+
+    if ($_GET['menu'] == "login") {
+        require_once './Vistas/Login/autentifica.php';
+    }
+
+    if ($_GET['menu'] == "cerrarsesion") {
+        require_once './Vistas/Login/cerrarsesion.php';
+    }
 }

@@ -5,7 +5,7 @@ class Sagricultor
     private $cif;
 
     //Propiedad que viene de la relación entre La empresa y Agricultor
-    private $agricultor;
+    private $agricultores;
 
     //Constructor
     public function __construct(string $nombre, string $cif)

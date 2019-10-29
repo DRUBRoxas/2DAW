@@ -27,3 +27,14 @@ HTMLSelectElement.prototype.pasarTA=function(sel){
     }
     sel.ordenar();
 }
+
+HTMLSelectElement.prototype.pasarA=function(sel){
+    while(this.selectedIndex!=-1)
+    {
+        option=this.options[this.selectedIndex];
+        option.selected=false;   
+        sel.appendChild(option);
+    }
+    sel.ordenar();
+}
+

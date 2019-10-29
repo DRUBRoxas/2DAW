@@ -1,0 +1,15 @@
+textarea{
+    resize: none;
+    height: 394px;
+}
+select{
+    height: 400px;
+    width: 150px;
+}
+
+button{
+    position: relative;
+    top: -200px;
+}
+
+
