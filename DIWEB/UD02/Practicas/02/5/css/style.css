@@ -1,0 +1,6 @@
+@media screen{
+    header{
+        background-image: url("../imagenes/fondo_superior.jpg");
+        color: white;
+    }
+}
