@@ -33,11 +33,14 @@ if (!empty($_POST)) {
     <?= $valida->ImprimirError('dni') ?>
     Nombre:<input type="text" name="nombre" class="form-control" value="<?= $valida->getValor('nombre') ?>"><br>
     <?= $valida->ImprimirError('nombre') ?>
-    Apellidos:<input type="text" name="apellidos" class="form-control" value="<?= $valida->getValor('apellidos') ?>"><br>
+    Apellidos:<input type="text" name="apellidos" class="form-control"
+        value="<?= $valida->getValor('apellidos') ?>"><br>
     <?= $valida->ImprimirError('apellidos') ?>
     Email:<input type="texto" name="email" class="form-control" value="<?= $valida->getValor('email') ?>"><br>
     <?= $valida->ImprimirError('dni') ?>
+    <td><a href='?menu=nuevaparcela&dni=$dni'>NUEVA PARCELA</a>&nbsp</td>
     <input type="submit" value="Enviar" class="btn btn-primary">
+
 </form>
 <br>
 <a href="?menu=mantenimiento">Volver a mantenimiento</a>

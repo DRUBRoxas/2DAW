@@ -7,7 +7,7 @@ class Agricultor
     private $email;
 
 
-    //Propiedad que nade de la relación entre Agricultor y Parcela
+    //Propiedad que nade de la relación entre Agricultor y parcela
     private $parcelas;
 
     public function __construct(string $dni, string $nombre, string $apellidos, string $email)
@@ -99,14 +99,50 @@ class Agricultor
     }
 
     /**
-     * Añade una nueva Parcela a la colección
+     * Añade una nueva parcela a la colección
      * 
-     * @param Parcela $nuevaParcela
+     * @param parcela $nuevaparcela
      * 
      * @return void
      */
-    public function addParcela(Parcela $nuevaParcela)
+    public function addparcela(parcela $nuevaparcela)
     {
-        $this->parcelas[$nuevaParcela->getId_parcela()] = $nuevaParcela;
+        $this->parcelas[$nuevaparcela->getId_parcela()] = $nuevaparcela;
+    }
+
+    /**
+     * Devuelve todas las parcelas
+     *
+     * @return array
+     */
+    public function allparcelas()
+    {
+        return $this->parcelas;
+    }
+
+    /**
+     * Borra un parcela de la colección
+     *
+     * @param parcela $borradoparcela
+     * 
+     * @return void
+     */
+    public function removeparcela(parcela $borradoparcela)
+    {
+        unset($this->parcelas[$borradoparcela->getId_parcela()]);
+    }
+
+    /**
+     * Modifica los datos de un parcela si existe
+     *
+     * @param parcela $modificaparcela
+     * 
+     * @return void
+     */
+    public function updateparcela(parcela $modificaparcela)
+    {
+        if (isset($this->parcelas[$modificaparcela->getId_parcela()])) {
+            $this->parcelas[$modificaparcela->getId_parcela()] = $modificaparcela;
+        }
     }
 }

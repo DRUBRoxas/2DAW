@@ -7,20 +7,20 @@ class Animal
     private $fechaNacimiento;
 
     //Propiedad que nace de la relación entre animal y vacuna
-    private $vacunas;
-    
+    private $Parcelas;
+
     //Constructor
-    public function __construct(string $numeroChip,string $nombre,string $raza,DateTime $fechaNacimiento)
+    public function __construct(string $numeroChip, string $nombre, string $raza, DateTime $fechaNacimiento)
     {
-        $this->numeroChip=$numeroChip;
-        $this->nombre=$nombre;
-        $this->raza=$raza;
-        $this->fechaNacimiento=$fechaNacimiento;
+        $this->numeroChip = $numeroChip;
+        $this->nombre = $nombre;
+        $this->raza = $raza;
+        $this->fechaNacimiento = $fechaNacimiento;
     }
 
     /**
      * Get the value of numeroChip
-     */ 
+     */
     public function getNumeroChip()
     {
         return $this->numeroChip;
@@ -30,7 +30,7 @@ class Animal
      * Set the value of numeroChip
      *
      * @return  self
-     */ 
+     */
     public function setNumeroChip($numeroChip)
     {
         $this->numeroChip = $numeroChip;
@@ -47,7 +47,7 @@ class Animal
      */
     public function addVacuna(Vacuna $nuevoVacuna)
     {
-        $this->vacunas[$nuevoVacuna->getTipoVacuna()]=$nuevoVacuna;
+        $this->Parcelas[$nuevoVacuna->getTipoVacuna()] = $nuevoVacuna;
     }
 
     /**
@@ -59,7 +59,7 @@ class Animal
      */
     public function removeVacuna(Vacuna $borradoVacuna)
     {
-        unset($this->vacunas[$borradoVacuna->getTipoVacuna()]);
+        unset($this->Parcelas[$borradoVacuna->getTipoVacuna()]);
     }
 
     /**
@@ -71,20 +71,19 @@ class Animal
      */
     public function updateVacuna(Vacuna $modificaVacuna)
     {
-        if(isset($this->vacunas[$modificaVacuna->getTipoVacuna()]))
-        {
-            $this->vacunas[$modificaVacuna->getTipoVacuna()]=$modificaVacuna;
+        if (isset($this->Parcelas[$modificaVacuna->getTipoVacuna()])) {
+            $this->Parcelas[$modificaVacuna->getTipoVacuna()] = $modificaVacuna;
         }
     }
 
     /**
-     * Devuelve la colección de Vacunas
+     * Devuelve la colección de Parcelas
      *
      * @return array
      */
-    public function allVacuna()
+    public function allParcelas()
     {
-        return $this->vacunas;
+        return $this->Parcelas;
     }
 
     /**
@@ -97,12 +96,12 @@ class Animal
      */
     public function findVacunaById(string $tipoVacuna)
     {
-        return $this->vacunas[$tipoVacuna];
+        return $this->Parcelas[$tipoVacuna];
     }
 
     /**
      * Get the value of nombre
-     */ 
+     */
     public function getNombre()
     {
         return $this->nombre;
@@ -112,7 +111,7 @@ class Animal
      * Set the value of nombre
      *
      * @return  self
-     */ 
+     */
     public function setNombre($nombre)
     {
         $this->nombre = $nombre;
@@ -122,7 +121,7 @@ class Animal
 
     /**
      * Get the value of raza
-     */ 
+     */
     public function getRaza()
     {
         return $this->raza;
@@ -132,7 +131,7 @@ class Animal
      * Set the value of raza
      *
      * @return  self
-     */ 
+     */
     public function setRaza($raza)
     {
         $this->raza = $raza;
@@ -142,7 +141,7 @@ class Animal
 
     /**
      * Get the value of fechaNacimiento
-     */ 
+     */
     public function getFechaNacimiento()
     {
         return $this->fechaNacimiento;
@@ -152,7 +151,7 @@ class Animal
      * Set the value of fechaNacimiento
      *
      * @return  self
-     */ 
+     */
     public function setFechaNacimiento($fechaNacimiento)
     {
         $this->fechaNacimiento = $fechaNacimiento;

@@ -4,7 +4,7 @@ require_once '../Cargadores/cargarhelper.php';
 Sesion::iniciar();
 if (!Sesion::leer("sagricultor")) {
     $sagricultor = new Sagricultor("SAgricultores S.L.", "14-666-P");
-    Sesion::escribir("Sagricultor", $sagricultor);
+    Sesion::escribir("sagricultor", $sagricultor);
 }
 class Principal
 {
