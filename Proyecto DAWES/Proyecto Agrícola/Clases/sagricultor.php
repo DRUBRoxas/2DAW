@@ -6,7 +6,7 @@ class Sagricultor
 
     //Propiedad que viene de la relación entre La empresa y Agricultor
     private $agricultores;
-
+    private $maquinas;
     //Constructor
     public function __construct(string $nombre, string $cif)
     {
@@ -36,6 +36,10 @@ class Sagricultor
         unset($this->agricultores[$borradoAgricultor->getDNI()]);
     }
 
+    public function alquilaMaquina(Maquina $alquilaMaquina)
+    {
+        $alquilaMaquina->setEstado(true);
+    }
     /**
      * Modifica los datos de un agricultor si existe
      *
@@ -68,5 +72,25 @@ class Sagricultor
     public function findAgricultorById(string $dni)
     {
         return $this->agricultores[$dni];
+    }
+    public function findMaquinaById(string $codigo)
+    {
+        return $this->maquinas[$codigo];
+    }
+
+    public function addMaquina(Maquina $nuevaMaquina)
+    {
+        $this->maquinas[$nuevaMaquina->getCodigo()] = $nuevaMaquina;
+    }
+
+
+    /**
+     * Devuelve la colección de maquinas
+     *
+     * @return array
+     */
+    public function allMaquinas()
+    {
+        return $this->maquinas;
     }
 }

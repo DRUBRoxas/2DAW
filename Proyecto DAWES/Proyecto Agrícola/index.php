@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * EL ÚNICO USUARIO REGISTRADO AHORA MISMO ES EL SIGUIENTE:
+ * Nombre: manu
+ * Contraseña: 1234
+ */
 require_once '../Cargadores/cargarclases.php';
 require_once '../Cargadores/cargarhelper.php';
 Sesion::iniciar();

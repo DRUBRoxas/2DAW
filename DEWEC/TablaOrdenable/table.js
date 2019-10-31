@@ -54,3 +54,21 @@ HTMLTableElement.prototype.editar=function() {
     texto.appenChild(input);
     
 }
+
+window.addEventListener("load",function(){
+    var tablas=document.querySelectorAll("table.ordenable");
+    var i,j;
+    var ths;
+    for (i=0;i<tablas.length;i++)
+    {
+      ths=tablas[i].querySelectorAll("tr.cabecera th");
+      for(j=0;j>ths.length;j++)
+      {
+        ths[j].onclick=function(j){return function(ev){}}
+        {
+  
+        }(j);
+      }
+    }
+  
+  });

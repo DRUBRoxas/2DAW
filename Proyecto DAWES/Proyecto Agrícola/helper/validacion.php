@@ -140,7 +140,6 @@ class Validacion
             return false;
         }
     }
-
     /**
      * Comprueba si hay errores
      *

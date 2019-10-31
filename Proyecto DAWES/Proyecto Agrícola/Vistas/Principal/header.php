@@ -23,6 +23,18 @@
                         <a class="dropdown-item" href="#">ACTIVIDADES</a>
                     </div>
                 </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="?menu=nuevamaquina">CREAR MAQUINA <span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="?menu=alquilarmaquina">ALQUILAR MAQUINA <span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="?menu=listadoalquiladas">LISTADO ALQUILADAS <span
+                            class="sr-only">(current)</span></a>
+                </li>
             </ul>
             <?= Sesion::existe('login') ? "Hola bienvenido " . Sesion::leer('login') .
                 "<a href='?menu=cerrarsesion'>Cerrar sesión</a>" : ""; ?>

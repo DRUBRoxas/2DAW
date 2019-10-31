@@ -28,4 +28,17 @@ if (isset($_GET['menu'])) {
     if ($_GET['menu'] == "listarparcelasagricultor") {
         require_once './Vistas/Mantenimiento/listarparcelasagricultor.php';
     }
+
+    if ($_GET['menu'] == "nuevamaquina") {
+        require_once './Vistas/Mantenimiento/nuevamaquina.php';
+    }
+    if ($_GET['menu'] == "alquilarmaquina") {
+        require_once './Vistas/Mantenimiento/alquilarmaquinas.php';
+    }
+    if ($_GET['menu'] == "alquilar") {
+        require_once './Vistas/Mantenimiento/alquilar.php';
+    }
+    if ($_GET['menu'] == "listadoalquiladas") {
+        require_once './Vistas/Mantenimiento/listadoalquiladas.php';
+    }
 }
