@@ -1,84 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" lang="Spanish"/>
-    <title>Trainings Website</title>
-   <!-- <style>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" lang="Spanish" />
+  <script src="https://kit.fontawesome.com/d5893ca20e.js" crossorigin="anonymous"></script>
+  <title>Trainings Website</title>
+  <style>
       @import url("./css/style.css");
     </style>
-    -->
-    <link rel="icon" type="image/png" href="./imagenes/favicon.png" sizes="16x16"></a>
-  </head>
 
-  <body>
-    <header>
-      <div>
+  <link rel="icon" type="image/png" href="./imagenes/favicon.png" sizes="16x16"></a>
+</head>
+
+<body>
+  <header>
+    <div>
         <IMG class="logotipo" src="./imagenes/logotipo.png " />
-        <a href="https://facebook.com"
-          ><img src="./imagenes/logo-facebook.png" height="25" width="25"
-        /></a>
-        <a href="https://twitter.com/"
-          ><img src="./imagenes/logo-twitter.png" height="25" width="25" />
-        </a>
-        <img src="./imagenes/telefono.png" /> 1-234-567-8910
+    </div>
+    <div class="info">
+      <a class="info" href="https://facebook.com"><i class="fab fa-facebook-f"></i></a>
+      <a class="info" href="https://twitter.com/"><i class="fab fa-twitter"></i>
+      </a>
+      <a class="info"><i class="fas fa-phone"></i> 1-234-567-8910</a>
+    </div>
+
+  </header>
+  <main>
+    <section>
+      <div>
+        <p>&#10004; Fusce in ultricies sem, ut tristique odio. Integer commodo pellentesque semper.Nulla eros lorem,
+          tincidunt sed accumsan sed, euismod ac dolor. Sed sed ante turpis. Phasellus rhoncus arcu at risus euismod, et
+          sagittis lorem efficitur. Praesent rhoncus sit amet nisi eget ullamcorper. Nullam imperdiet quam in nisi
+          congue porttitor. </p>
+        <p>&#10004; Fusce in ultricies sem, ut tristique odio. Integer commodo pellentesque semper.Nulla eros lorem,
+          tincidunt sed accumsan sed, euismod ac dolor. Sed sed ante turpis. Phasellus rhoncus arcu at risus euismod, et
+          sagittis lorem efficitur. Praesent rhoncus sit amet nisi eget ullamcorper. Nullam imperdiet quam in nisi
+          congue porttitor. </p>
+        <p>&#10004; Fusce in ultricies sem, ut tristique odio. Integer commodo pellentesque semper.Nulla eros lorem,
+          tincidunt sed accumsan sed, euismod ac dolor. Sed sed ante turpis. Phasellus rhoncus arcu at risus euismod, et
+          sagittis lorem efficitur. Praesent rhoncus sit amet nisi eget ullamcorper. Nullam imperdiet quam in nisi
+          congue porttitor. </p>
       </div>
-      <p>&#10004;   </p>
       <p>
         Solicita información
       </p>
-      <form>
-        <p>Nombree:</p>
+      <form class="registro">
+        <p>Nombre:</p>
         <input type="text" required autocomplete="on" placeholder="Nombre" />
         <p>Apellidos:</p>
         <input type="text" required autocomplete="on" placeholder="Apellidos" />
         <p>Correo Electrónico:</p>
-        <input
-          type="text"
-          required
-          autocomplete="on"
-          placeholder="Correo Electrónico"
-        />
+        <input type="text" required autocomplete="on" placeholder="Correo Electrónico" />
         <p><button>Enviar Solicitud</button></p>
-      </form>
-      <hr />
-    </header>
+        </>
+    </section>
+    <hr />
     <div>
-      <ul>
+      <ul class="orgventajas">
         <li>
-          <img src="./imagenes/favicon.png" />
+          <img class="ventajas" src="./imagenes/favicon.png" />
           <p>Elige tu Propio Horario</p>
         </li>
         <li>
-          <img src="./imagenes/favicon.png" />
+          <img class="ventajas" src="./imagenes/favicon.png" />
           <p>Aprende de expertos de la industria</p>
         </li>
         <li>
-          <img src="./imagenes/favicon.png" />
+          <img class="ventajas" src="./imagenes/favicon.png" />
           <p>Crea campañas reales</p>
         </li>
         <li>
-          <img src="./imagenes/favicon.png" />
+          <img class="ventajas" src="./imagenes/favicon.png" />
           <p>Obtén tu certificado</p>
         </li>
       </ul>
     </div>
     <hr />
     <div>
-      <p>pequeña introduccion mas un video a la derecha</p>
+      <ul class="video">
+        <li>
+          <p>Fusce in ultricies sem, ut tristique odio. Integer commodo pellentesque semper.
+            Nulla eros lorem, tincidunt sed accumsan sed, euismod ac dolor. Sed sed ante turpis.
+            Phasellus rhoncus arcu at risus euismod, et sagittis lorem efficitur.
+            Praesent rhoncus sit amet nisi eget ullamcorper.
+            Nullam imperdiet quam in nisi congue porttitor.
+            Sed tellus est, efficitur et eros non, ultricies euismod nisi. S</p>
+        </li>
+        <li>
+          <video src="./imagenes/marketing.mp4" width="640" height="480"></video>
+        </li>
+      </ul>
     </div>
     <hr />
     <div>
       <p>Staff de personas</p>
-      <p>foto1</p>
-      <p>foto2</p>
-      <p>foto3</p>
-      <p>foto4</p>
+      <ul class="personas">
+        <li><a class="FotoPersona" title="Persona1" href="persona1"><img src="./imagenes/profile1.jpeg"
+              alt="persona1" /></a>
+          <p class="nombre">Ned S</p>
+          <p class="descripcion">Consultor de Digital Marketing</p>
+          <p>
+            <a href="https://facebook.com"><i class="fab fa-facebook"></i></a>
+            <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+            <a href="https://linkedin.com/"><i class="fab fa-linkedin"></i></a>
+          </p>
+        </li>
+        <br>
+        <li><a class="FotoPersona" title="Persona2" href="persona2"><img src="./imagenes/profile2.jpeg"
+              alt="persona2" /></a>
+          <p class="nombre">Joan W.</p>
+          <p class="descripcion">Paid Search Specialist</p>
+          <p>
+            <a href="https://facebook.com"><i class="fab fa-facebook"></i></a>
+            <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+            <a href="https://linkedin.com/"><i class="fab fa-linkedin"></i></a>
+          </p>
+        </li>
+        <br>
+        <li><a class="FotoPersona" title="Persona3" href="persona3"><img src="./imagenes/profile3.jpeg"
+              alt="persona3" /></a>
+          <p class="nombre">Carrie M.</p>
+          <p class="descripcion">Directora de E-commerce</p>
+          <p>
+            <a href="https://facebook.com"><i class="fab fa-facebook"></i></a>
+            <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+            <a href="https://linkedin.com/"><i class="fab fa-linkedin"></i></a>
+          </p>
+        </li>
+        <br>
+        <li><a class="FotoPersona" title="Persona4" href="persona4"><img src="./imagenes/profile4.jpeg"
+              alt="persona4" /></a>
+          <p class="nombre">Rick G</p>
+          <p class="descripcion">Consultor de Social Media</p>
+          <p>
+            <a href="https://facebook.com"><i class="fab fa-facebook"></i></a>
+            <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+            <a href="https://linkedin.com/"><i class="fab fa-linkedin"></i></a>
+          </p>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <h1>¿Deseas más información?</h1>
+      <p> Rellena nuestro formulario de solicitud de información y nos pondremos en contacto contigo</p>
+      <button>Solicita Información Ahora</button>
     </div>
     <hr />
-    <footer>
-      <p>Cosas de footer</p>
-    </footer>
-  </body>
+  </main>
+  <footer>
+    <nav>
+      <ul class="nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="/">Acerca de</a></li>
+        <li><a href="/">Cursos</a></li>
+        <li><a href="/">Política de privacidad</a></li>
+        <li><a href="/">Contacto</a></li>
+        <li> &#169; 2018. Orlando José- SimplicityTree. Derechos Reservados</li>
+      </ul>
+    </nav>
+  </footer>
+</body>
+
 </html>

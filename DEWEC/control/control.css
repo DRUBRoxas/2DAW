@@ -1,0 +1,12 @@
+form#clientes label{
+    display: inline-block;
+    width:150px;
+}
+table{
+    margin-top: 10px;
+    border:1px solid black;
+    width: 600px;
+}
+thead{
+    border-bottom: 2px solido black;
+}

@@ -45,9 +45,3 @@ window.addEventListener("load",function()
         sel2.pasarTA(sel1);
     });
 });
-
-
-HTMLTableElement.prototype.ordena=function(col,tipo)
-{
-    
-}

@@ -3,4 +3,10 @@
         background-image: url("../imagenes/fondo_superior.jpg");
         color: white;
     }
+    .info{
+        text-align: right;
+    }
+    .logotipo{
+        text-align:  left;
+    }
 }

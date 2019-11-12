@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Control</title>
+    <link rel="stylesheet" href="control.css">
+    <script src="control.js"></script>
+</head>
+<body>
+    <div>
+        <form id="clientes">
+        <label>ID </label><input type="text" name="id"><br/>
+        <label>Nombre </label><input type="text" name="nombre"><br/>
+        <label>Apellidos </label><input type="text" name="apellidos"><br/>
+        <label>F.Nacimiento </label><input type="text" name="fnacimiento"><br/>
+        <input type="button" value="guardar" id="boton">
+        </form>
+    </div>
+    <table>
+        <thead>
+            <tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>F.Nacimiento</th><th>Acción</th></tr>
+        </thead>
+        <tbody id="listado">
+        </tbody>
+    </table>
+</body>
+</html>
