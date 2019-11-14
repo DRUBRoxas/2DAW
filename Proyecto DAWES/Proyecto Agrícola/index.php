@@ -4,7 +4,7 @@
  * EL ÚNICO USUARIO REGISTRADO AHORA MISMO ES EL SIGUIENTE:
  * Nombre: manu
  * Contraseña: 1234
- * iyt
+ * kdfhg
  */
 require_once '../Cargadores/cargarclases.php';
 require_once '../Cargadores/cargarhelper.php';
