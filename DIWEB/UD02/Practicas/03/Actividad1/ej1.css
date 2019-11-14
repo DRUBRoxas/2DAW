@@ -1,0 +1,50 @@
+.caja {
+    -webkit-transition: background-color 1s, box-shadow 0.5s;
+    transition: background-color 1s, box-shadow 0.5s;
+}
+
+.caja:hover {
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+.caja1:hover {
+    background-color: red;
+}
+
+.caja2:hover {
+    background-color: purple;
+}
+
+.caja3:hover {
+    background-color: blue;
+}
+
+.caja4:hover {
+    background-color: skyblue;
+}
+
+.caja5:hover {
+    background-color: cyan;
+}
+
+.caja6:hover {
+    background-color: yellow;
+}
+
+.caja7:hover {
+    background-color: orangered;
+}
+
+.caja8:hover {
+    background-color: gray;
+}
+
+.caja9:hover {
+    background-color: darkblue;
+}
+
+.caja10:hover {
+    background-color: black;
+}
