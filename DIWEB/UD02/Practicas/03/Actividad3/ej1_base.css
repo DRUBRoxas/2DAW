@@ -25,51 +25,52 @@
 }
 
 .caja2:hover {
-    background-color: red;
-    transform: scale(2, 2);
+    background-color: purple;
+    transform: rotate(720deg);
 }
 
 .caja3:hover {
-    background-color: red;
-    transform: scale(2, 2);
+    background-color: blue;
+    transform: Skew(20deg, 10deg);
 }
 
 .caja4:hover {
-    background-color: red;
-    transform: scale(2, 2);
+    background-color: lightskyblue;
+    transform: SkewX(20deg);
 }
 
 .caja5:hover {
-    background-color: red;
-    transform: scale(2, 2);
+    background-color: cyan;
+    transform: SkewY(10deg);
 }
 
 .caja6:hover {
-    background-color: red;
-    transform: scale(2, 2);
+    background-color: yellow;
+    transform: Translate(50px, 30px);
 }
 
 .caja7:hover {
-    background-color: red;
-    transform: scale(2, 2);
+    background-color: orangered;
+    transform: TranslateX(50px);
 }
 
 .caja8:hover {
-    background-color: red;
-    transform: scale(2, 2);
+    background-color: gray;
+    transform: TranslateY(30px);
 }
 
 .caja9:hover {
-    background-color: red;
-    transform: scale(2, 2);
+    background-color: darkblue;
+    transform: Perspective(150px) rotateY(40deg);
 }
 
 .caja10:hover {
-    background-color: red;
-    transform: scale(2, 2);
+    background-color: darkgray;
+    transform: Perspective(150px) rotateX(80deg);
 }
 
 .caja11:hover {
-    background-color: red;
-    transform: scale(2, 2);
+    background-color: black;
+    transform: Matrix(1, 0, 0.5, 1, 150, 0);
+    );
 }
