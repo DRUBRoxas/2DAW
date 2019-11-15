@@ -1,4 +1,5 @@
 <?php
+//esto es solo una prueba
 require_once './Clases/categorie.php';
 //Crear conexion a BD
 $dsn = "mysql:dbname=northwind;host=127.0.0.1";
