@@ -6,11 +6,16 @@ class Usuario
     private $roles;
 
     //Constructor
-    public function __construct(string $usuario, string $contrasena, array $roles)
+    public function __construct(string $usuario, string $contrasena, array $roles = null)
     {
         $this->usuario = $usuario;
         $this->contrasena = $contrasena;
-        $this->roles = $roles;
+        if ($roles == null) {
+            $this->roles = ["Estandar"];
+        } else {
+
+            $this->roles = $roles;
+        }
     }
 
 

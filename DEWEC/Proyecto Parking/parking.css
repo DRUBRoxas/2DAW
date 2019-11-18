@@ -1,0 +1,25 @@
+header {
+    text-align: center;
+}
+
+.entrada {
+    margin: 1%;
+    float: left;
+    border: 1px;
+}
+
+.tabla {
+    margin: 1%;
+    float: left;
+}
+
+.salida {
+    margin: 1px;
+    float: right;
+    border: 1px;
+}
+
+.filas {
+    text-align: center;
+    font-size: large;
+}
