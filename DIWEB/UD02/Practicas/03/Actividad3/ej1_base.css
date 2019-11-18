@@ -72,5 +72,4 @@
 .caja11:hover {
     background-color: black;
     transform: Matrix(1, 0, 0.5, 1, 150, 0);
-    );
 }
