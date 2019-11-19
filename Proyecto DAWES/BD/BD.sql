@@ -5,19 +5,19 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema Agricultor
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema Agricultor
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
-USE `mydb` ;
+CREATE SCHEMA IF NOT EXISTS `Agricultor` DEFAULT CHARACTER SET utf8 ;
+USE `Agricultor` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`Roles`
+-- Table `Agricultor`.`Roles`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Roles` (
+CREATE TABLE IF NOT EXISTS `Agricultor`.`Roles` (
   `idRoles` INT NOT NULL,
   `nombre` VARCHAR(45) NULL,
   PRIMARY KEY (`idRoles`))
@@ -25,24 +25,24 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Usuario`
+-- Table `Agricultor`.`Usuario`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Usuario` (
+CREATE TABLE IF NOT EXISTS `Agricultor`.`Usuario` (
   `nombre` VARCHAR(16) NOT NULL,
   `contraseña` VARCHAR(32) NOT NULL,
   `Roles_idRoles` INT NOT NULL,
   PRIMARY KEY (`Roles_idRoles`),
   CONSTRAINT `fk_Usuario_Roles1`
     FOREIGN KEY (`Roles_idRoles`)
-    REFERENCES `mydb`.`Roles` (`idRoles`)
+    REFERENCES `Agricultor`.`Roles` (`idRoles`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Agricultores`
+-- Table `Agricultor`.`Agricultores`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Agricultores` (
+CREATE TABLE IF NOT EXISTS `Agricultor`.`Agricultores` (
   `dni` VARCHAR(9) NOT NULL,
   `nombre` VARCHAR(45) NOT NULL,
   `apellidos` VARCHAR(45) NOT NULL,
@@ -52,9 +52,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Maquina`
+-- Table `Agricultor`.`Maquina`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Maquina` (
+CREATE TABLE IF NOT EXISTS `Agricultor`.`Maquina` (
   `codigo` VARCHAR(8) NOT NULL,
   `nombre` VARCHAR(45) NOT NULL,
   `precio_hora` DOUBLE NOT NULL,
@@ -65,9 +65,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Parcela`
+-- Table `Agricultor`.`Parcela`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Parcela` (
+CREATE TABLE IF NOT EXISTS `Agricultor`.`Parcela` (
   `idParcela` INT NOT NULL,
   `nombre` VARCHAR(45) NOT NULL,
   `num_parcela` INT NULL,
@@ -77,48 +77,45 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Parcela` (
   PRIMARY KEY (`idParcela`, `Agricultores_dni`),
   CONSTRAINT `fk_Parcela_Agricultores1`
     FOREIGN KEY (`Agricultores_dni`)
-    REFERENCES `mydb`.`Agricultores` (`dni`)
+    REFERENCES `Agricultor`.`Agricultores` (`dni`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Actividad`
+-- Table `Agricultor`.`Actividad`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Actividad` (
+CREATE TABLE IF NOT EXISTS `Agricultor`.`Actividad` (
   `id_actividad` INT NOT NULL,
   `titulo` VARCHAR(45) NOT NULL,
   `tipo` VARCHAR(45) NULL,
   `descripcion` VARCHAR(100) NULL,
   `Parcela_idParcela` INT NOT NULL,
   PRIMARY KEY (`id_actividad`, `Parcela_idParcela`),
-  INDEX `fk_Actividad_Parcela1_idx` (`Parcela_idParcela` ASC) VISIBLE,
   CONSTRAINT `fk_Actividad_Parcela1`
     FOREIGN KEY (`Parcela_idParcela`)
-    REFERENCES `mydb`.`Parcela` (`idParcela`)
+    REFERENCES `Agricultor`.`Parcela` (`idParcela`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Usuario_has_Roles`
+-- Table `Agricultor`.`Usuario_has_Roles`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Usuario_has_Roles` (
-  `Usuario_Roles_idRoles` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `Agricultor`.`Usuario_has_Roles` (
+  `Usuario_Roles_idRoles` VARCHAR(100) NOT NULL,
   `Roles_idRoles` INT NOT NULL,
   PRIMARY KEY (`Usuario_Roles_idRoles`, `Roles_idRoles`),
-  INDEX `fk_Usuario_has_Roles_Roles1_idx` (`Roles_idRoles` ASC) VISIBLE,
-  INDEX `fk_Usuario_has_Roles_Usuario1_idx` (`Usuario_Roles_idRoles` ASC) VISIBLE,
   CONSTRAINT `fk_Usuario_has_Roles_Usuario1`
     FOREIGN KEY (`Usuario_Roles_idRoles`)
-    REFERENCES `mydb`.`Usuario` (`Roles_idRoles`)
+    REFERENCES `Agricultor`.`Usuario` (`Roles_idRoles`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Usuario_has_Roles_Roles1`
     FOREIGN KEY (`Roles_idRoles`)
-    REFERENCES `mydb`.`Roles` (`idRoles`)
+    REFERENCES `Agricultor`.`Roles` (`idRoles`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
