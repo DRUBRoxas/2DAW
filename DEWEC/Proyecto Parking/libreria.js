@@ -2,7 +2,7 @@
 
 //Evento de carga de la pagina
 window.addEventListener("load", function() {
-    var parking = new Parking();
+    var parking = new Parking(30, 0.05, 15);
     parking.recuperar();
 
     setInterval(RellenaTabla, 1000);
@@ -42,13 +42,18 @@ window.addEventListener("load", function() {
             event.stopPropagation();
             var mat = document.getElementById("matE");
             if (/(\d{4})([A-Z]{3})/.test(mat.value)) {
+
                 var coche = new Coche(mat.value);
-                mat.value = "";
-                mat.focus();
-                parking.entra(coche);
-                parking.almacena();
-                parking.recuperar();
-                RellenaTabla(parking);
+                if (!parking.robado(coche)) {
+                    mat.value = "";
+                    mat.focus();
+                    parking.entra(coche);
+                    parking.almacena();
+                    parking.recuperar();
+                    RellenaTabla(parking);
+                } else {
+                    alert("robao")
+                }
             } else {
                 alert("Introduce una matricula de un formato valido");
                 mat.value = "";

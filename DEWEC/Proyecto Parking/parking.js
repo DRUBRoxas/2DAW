@@ -2,9 +2,12 @@
 
 
 //Esto es un objeto
-function Parking() {
+function Parking(mgratis, pminuto, maxdia) {
     aparcados = [];
-    this.plazas
+    this.plazas;
+    this.minutosGratis = mgratis;
+    this.precioMinuto = pminuto;
+    this.maximoDia = maxdia;
 }
 
 Parking.prototype.entra = function(coche) {
@@ -61,47 +64,41 @@ Parking.prototype.vaciar = function() {
 
 }
 Parking.prototype.devolverCoche = function(mat) {
-        var i = 0;
-        for (i = 0; i < this.aparcados.length; i++) {
-            coche = this.aparcados[i];
-            if (coche.mat === mat) {
-                return coche;
-            }
+    var i = 0;
+    for (i = 0; i < this.aparcados.length; i++) {
+        coche = this.aparcados[i];
+        if (coche.mat === mat) {
+            return coche;
         }
-        return null;
     }
-    /** 
-    Parking.prototype.robado = function(coche) {
-            coche_robado = false;
-            if (localStorage.getItem("robados")) {
-                var robados = JSON.parse(localStorage.getItem("robados"));
-                for (i = 0; i < robados.length; i++) {
-                    if (robados[i].mat === coche.mat) {
-                        coche_robado = true;
-                    } else {
-                        break;
-                    }
-                }
+    return null;
+}
+Parking.prototype.robado = function(coche) {
+        coche_robado = false;
+        if (localStorage.getItem("robados")) {
+            var robados = JSON.parse(localStorage.getItem("robados"));
+            debugger;
+            for (i = 0; i < robados.length; i++) {
+                if (robados[i].mat === coche.mat) {
+                    coche_robado = true;
+                } else {}
             }
-            return coche_robado;
         }
-    **/
+        return coche_robado;
+    }
     // *FALTA* controlar que hacer cuando se pase del día, solo controla que se pase de los 15 euros
 Parking.prototype.CalcularPrecioTotal = function(coche) {
     var precio;
-    tiempo = (new Date().getTime()) - coche.entrada;
-
-    if (tiempo <= 1800000) {
-        precio = 0;
-    } else if (tiempo >= 18000000) {
-        precio = 15;
-    } else {
-        tiempo = tiempo / 1000;
-        tiempo = tiempo / 60;
-        precio = tiempo * 5;
-        precio = precio / 100;
+    var tiempo = (new Date().getTime()) - coche.entrada;
+    var minutos = parseInt(tiempo / (1000 * 60));
+    if (minutos > this.minutosGratis) {
+        var dias = parseInt(minutos / (60 * 24));
+        var sobrantes = minutos % (60 * 24);
+        precio = sobrantes * this.precioMinuto;
+        if (precio > this.maximoDia) {
+            precio = this.maximoDia;
+        }
+        precio = precio + dias * this.maximoDia;
+        return precio.toFixed(2);
     }
-
-    return precio.toFixed(2);
-
 }
