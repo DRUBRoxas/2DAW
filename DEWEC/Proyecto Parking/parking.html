@@ -8,6 +8,7 @@
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="parking.css" />
     <script src="libreria.js"></script>
+    <script src="parking.js"></script>
 </head>
 
 <body>
@@ -22,7 +23,7 @@
                 </td>
             </tr>
             <tr>
-                <td><input type="text" id="matriculaE" placeholder="matricula" /></td>
+                <td><input type="text" id="matE" placeholder="matricula" maxlength="7"/></td>
             </tr>
             <tr>
                 <td>
@@ -34,16 +35,23 @@
         </table>
     </div>
 
-    <div class="tabla">
-        <table class="vehiculos" border="1px">
-            <tr class="Datos">
+    <div class="lista">
+        <table id="tabla" class="vehiculos" border="1px">
+            <thead id="Datos">
+                <tr>
                 <td class="filas">
                     Matricula
                 </td>
                 <td class="filas">
                     Fecha de entrada
                 </td>
-            </tr>
+                <td class="filas">
+                    Precio
+                </td>
+            </thead>
+        </tr>
+        <tbody id="listado">
+        </tbody>
         </table>
     </div>
 
@@ -55,7 +63,7 @@
                 </td>
             </tr>
             <tr>
-                <td><input type="text" id="matriculaS" placeholder="matricula" /></td>
+                <td><input type="text" id="matS" placeholder="matricula" maxlength="7" /></td>
             </tr>
             <tr>
                 <td>
@@ -65,6 +73,8 @@
                 </td>
             </tr>
         </table>
+    </div>
+    <div id="ticket">
     </div>
 </body>
 
