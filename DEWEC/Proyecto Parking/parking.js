@@ -2,12 +2,13 @@
 
 
 //Esto es un objeto
-function Parking(mgratis, pminuto, maxdia) {
+function Parking(mgratis, pminuto, maxdia, numplazas) {
     aparcados = [];
     this.plazas;
     this.minutosGratis = mgratis;
     this.precioMinuto = pminuto;
     this.maximoDia = maxdia;
+    this.NumeroPlazas = numplazas;
 }
 
 Parking.prototype.entra = function(coche) {
@@ -77,7 +78,6 @@ Parking.prototype.robado = function(coche) {
         coche_robado = false;
         if (localStorage.getItem("robados")) {
             var robados = JSON.parse(localStorage.getItem("robados"));
-            debugger;
             for (i = 0; i < robados.length; i++) {
                 if (robados[i].mat === coche.mat) {
                     coche_robado = true;
@@ -88,7 +88,7 @@ Parking.prototype.robado = function(coche) {
     }
     // *FALTA* controlar que hacer cuando se pase del día, solo controla que se pase de los 15 euros
 Parking.prototype.CalcularPrecioTotal = function(coche) {
-    var precio;
+    var precio = 0;
     var tiempo = (new Date().getTime()) - coche.entrada;
     var minutos = parseInt(tiempo / (1000 * 60));
     if (minutos > this.minutosGratis) {
@@ -99,6 +99,6 @@ Parking.prototype.CalcularPrecioTotal = function(coche) {
             precio = this.maximoDia;
         }
         precio = precio + dias * this.maximoDia;
-        return precio.toFixed(2);
     }
+    return precio.toFixed(2)
 }

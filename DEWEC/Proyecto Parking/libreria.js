@@ -2,7 +2,7 @@
 
 //Evento de carga de la pagina
 window.addEventListener("load", function() {
-    var parking = new Parking(30, 0.05, 15);
+    var parking = new Parking(30, 0.05, 15, 7);
     parking.recuperar();
 
     setInterval(RellenaTabla, 1000);
@@ -44,13 +44,20 @@ window.addEventListener("load", function() {
             if (/(\d{4})([A-Z]{3})/.test(mat.value)) {
 
                 var coche = new Coche(mat.value);
+                var plazas = plazasDisponibles();
+                debugger;
                 if (!parking.robado(coche)) {
-                    mat.value = "";
-                    mat.focus();
-                    parking.entra(coche);
-                    parking.almacena();
-                    parking.recuperar();
-                    RellenaTabla(parking);
+                    if (plazas > 0) {
+                        mat.value = "";
+                        mat.focus();
+                        parking.entra(coche);
+                        parking.almacena();
+                        parking.recuperar();
+                        RellenaTabla(parking);
+                    } else {
+                        alert("Todas las plazas estan ocupadas")
+                    }
+
                 } else {
                     alert("robao")
                 }
@@ -120,6 +127,13 @@ window.addEventListener("load", function() {
             " €</p></td></table>";
 
         setTimeout(BorraTicket, 10000);
+    }
+
+    function plazasDisponibles() {
+        zonap = document.getElementById("plazas");
+        totalPlazas = parking.NumeroPlazas;
+        PlazasOcupadas = parking.aparcados.length;
+        return totalPlazas - PlazasOcupadas;
     }
 
     function BorraTicket() {
