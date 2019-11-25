@@ -1,0 +1,9 @@
+#cuerpo
+{
+    min-height: 600px;
+}
+#footer
+{
+    min-height: 60px;
+    background-color: cornflowerblue;
+}
