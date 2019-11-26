@@ -1,0 +1,77 @@
+@media (max-width:576px) {
+    .cabezera {
+        background-color: orange;
+        border: 1px solid white;
+        text-align: center;
+    }
+    .bloque1 {
+        background-color: red;
+        border: 1px solid white;
+    }
+    .bloque2 {
+        background-color: blue;
+        border: 1px solid white;
+        text-align: center;
+    }
+    .bloque3 {
+        background-color: red;
+        border: 1px solid white;
+        text-align: left;
+    }
+    .footer1,
+    .footer2 {
+        background-color: yellow;
+        border: 1px solid white;
+        text-align: center;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+    .cabezera {
+        background-color: blue;
+        border: 1px solid white;
+    }
+    .bloque1 {
+        background-color: red;
+        border: 1px solid white;
+    }
+    .bloque2 {
+        background-color: red;
+        border: 1px solid white;
+        text-align: right;
+    }
+    .bloque3 {
+        background-color: green;
+        border: 1px solid white;
+        text-align: center;
+    }
+    .footer1,
+    .footer2 {
+        background-color: yellow;
+        border: 1px solid white;
+        text-align: center;
+    }
+}
+
+@media (min-width: 768px) {
+    .cabezera {
+        background-color: green;
+        border: 1px solid white;
+    }
+    .bloque1,
+    .bloque2,
+    .bloque3 {
+        background-color: red;
+        border: 1px solid white;
+        text-align: center;
+    }
+    .footer1 {
+        background-color: yellow;
+        border: 1px solid white;
+        text-align: right;
+    }
+    .footer2 {
+        background-color: yellow;
+        border: 1px solid white;
+    }
+}
