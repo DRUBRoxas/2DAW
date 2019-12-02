@@ -1,0 +1,13 @@
+.verde {
+    background-color: green;
+    border: 1px solid black;
+}
+
+.gris {
+    background-color: gray;
+    border: 1px solid black;
+}
+
+.container {
+    min-height: 500px;
+}
