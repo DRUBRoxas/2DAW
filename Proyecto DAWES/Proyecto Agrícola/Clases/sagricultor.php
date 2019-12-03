@@ -25,7 +25,6 @@ class Sagricultor
         $this->agricultores[$nuevoAgricultor->getDni()] = $nuevoAgricultor;
     }
 
-
     /**
      * Borra un agricultor de la colección
      *
@@ -93,15 +92,5 @@ class Sagricultor
     public function allMaquinas()
     {
         return $this->maquinas;
-    }
-
-    public function addUsuario(Usuario $nuevoUsario)
-    {
-        $this->usuarios[$nuevoUsuario->getNombre()] = $nuevoUsuario;
-    }
-
-    public function removeUsuario(Usuario $borradoUsuario)
-    {
-        unset($this->usuarios[$borradoUsuario->getNombre()]);
     }
 }
