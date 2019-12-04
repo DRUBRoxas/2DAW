@@ -8,6 +8,12 @@
     border: 1px solid black;
 }
 
-.container {
+.blanco {
+    background-color: white;
+    border: 1px solid black;
+}
+
+.data {
     min-height: 500px;
+    border: 1px solid black;
 }
