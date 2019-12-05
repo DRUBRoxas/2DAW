@@ -6,8 +6,8 @@ $valida = new Validacion();
 //Si he realizado un submit
 if (!empty($_POST)) {
     //validamos los datos
-    //validamos dni
-    $valida->validarIDParcela(id_parcela);
+    //validamos el id de la parcela
+    $valida->validarIDParcela($id_parcela);
 
     //valida el nombre, longitud minima de 3 y máxima de 20
     $valida->CadenaRango('nombre', 20, 3);
@@ -18,6 +18,7 @@ if (!empty($_POST)) {
     //valida el numero de olivos
     $valida->EnteroRango('NumeroOlivos', 1);
 
+    $agricultor = $sagricultor->findagricultorById($_GET['id']);
     if ($valida->ValidacionPasada()) {
 
         $id_parcela = $_POST["id_parcela"];
@@ -26,7 +27,7 @@ if (!empty($_POST)) {
         $numeroPoligono = $_POST["numeroPoligono"];
         $numeroOlivos = $_POST["numeroOlivos"];
         $nuevaParcela = new Parcela($id_parcela, $nombre, $numeroParcela, $numeroPoligono, $numeroOlivos);
-        $sagricultor->addAgricultor($nuevoAgricultor);
+        $agricultor->addParcela($nuevaParcela);
         Sesion::escribir("sagricultor", $sagricultor);
     }
 }

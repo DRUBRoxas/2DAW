@@ -42,3 +42,4 @@ $sagricultor = Sesion::leer("sagricultor");
 </table>
 </br>
 <a class="btn btn-primary" href="?menu=nuevamaquina">Crear Maquina</a>
+<a class="btn btn-primary" href="?menu=listadoalquiladas">Listar Maquinas Alquiladas</a>

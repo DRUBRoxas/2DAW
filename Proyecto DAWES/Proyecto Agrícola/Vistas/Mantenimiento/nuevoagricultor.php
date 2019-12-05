@@ -29,15 +29,15 @@ if (!empty($_POST)) {
 }
 ?>
 <form action="" method="post">
+    <?= $valida->ImprimirError('dni') ?>
     DNI:<input type="text" name="dni" class="form-control" value="<?= $valida->getValor('dni') ?>"><br>
-    <?= $valida->ImprimirError('dni') ?>
-    Nombre:<input type="text" name="nombre" class="form-control" value="<?= $valida->getValor('nombre') ?>"><br>
     <?= $valida->ImprimirError('nombre') ?>
-    Apellidos:<input type="text" name="apellidos" class="form-control" value="<?= $valida->getValor('apellidos') ?>"><br>
+    Nombre:<input type="text" name="nombre" class="form-control" value="<?= $valida->getValor('nombre') ?>"><br>
     <?= $valida->ImprimirError('apellidos') ?>
-    Email:<input type="texto" name="email" class="form-control" value="<?= $valida->getValor('email') ?>"><br>
+    Apellidos:<input type="text" name="apellidos" class="form-control" value="<?= $valida->getValor('apellidos') ?>"><br>
     <?= $valida->ImprimirError('dni') ?>
-
+    Email:<input type="texto" name="email" class="form-control" value="<?= $valida->getValor('email') ?>"><br>
+    <input type="submit" value="Enviar" class="btn btn-primary">
 </form>
 <br>
 <a href="?menu=listaragricultores">Volver al listado</a>

@@ -28,7 +28,7 @@ $sagricultor = Sesion::leer("sagricultor");
                 echo "<td>" . $agricultor->getNombre() . "</td>";
                 echo "<td>" . $agricultor->getApellidos() . "</td>";
                 echo "<td>" . $agricultor->getEmail() . "</td>";
-                echo "<td><a href='?menu=listaparcelas&dni=$dni'>LISTAR PARCELAS</a>&nbsp</td>";
+                echo "<td><a href='?menu=listarparcelasagricultor&dni=$dni'>LISTAR PARCELAS</a>&nbsp</td>";
                 echo "<td><a href='?menu=borraagricultor&id=$dni'>BORRAR</a>&nbsp;
                  <a href='?menu=modificaagricultor&dni=$dni'>MODIFICAR</a>
                  </td>";
