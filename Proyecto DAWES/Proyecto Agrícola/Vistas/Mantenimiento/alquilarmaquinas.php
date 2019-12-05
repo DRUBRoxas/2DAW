@@ -29,7 +29,11 @@ $sagricultor = Sesion::leer("sagricultor");
                 echo "<td>" . $maquinas->getPrecio_Hora() . "</td>";
                 echo "<td>" . $maquinas->getFecha_compra() . "</td>";
                 echo "<td>" . $maquinas->getEstado() . "</td>";
-                echo "<td><a href='?menu=alquilar&codigo=$codigo'>ALQUILAR MAQUINA</a>&nbsp</td>";
+                echo "<td><a href='?menu=alquilar&codigo=$codigo'>ALQUILAR </a>&nbsp</td>";
+                echo "<td><a href='?menu=borramaquina&codigo=$codigo'>BORRAR</a>&nbsp;
+                 <a href='?menu=modificamaquina&codigo=$codigo'>MODIFICAR</a>
+                 </td>";
+                echo "</tr>";
                 echo "</tr>";
             }
         }
@@ -37,4 +41,4 @@ $sagricultor = Sesion::leer("sagricultor");
     </tbody>
 </table>
 </br>
-<a class="btn btn-primary" href="?menu=nuevoagricultor">Crear agricultor</a>
+<a class="btn btn-primary" href="?menu=nuevamaquina">Crear Maquina</a>

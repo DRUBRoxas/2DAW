@@ -26,12 +26,12 @@ if (!empty($_POST)) {
         $nuevoAgricultor = new Agricultor($dni, $nombre, $apellidos, $email);
         $sagricultor->addAgricultor($nuevoAgricultor);
         Sesion::escribir("sagricultor", $sagricultor);
+        header("location:?menu=listaragricultores");
     }
-    header("location:?menu=mantenimiento");
 }
 
 if (isset($_POST['cancelar'])) {
-    header("location:?menu=mantenimiento");
+    header("location:?menu=listaragricultores");
 } else {
     $agricultor = $sagricultor->findAgricultorById($_GET['dni']);
     $_POST['dni'] = $agricultor->getDni();
@@ -46,8 +46,7 @@ if (isset($_POST['cancelar'])) {
     <?= $valida->ImprimirError('dni') ?>
     Nombre:<input type="text" name="nombre" class="form-control" value="<?= $valida->getValor('nombre') ?>"><br>
     <?= $valida->ImprimirError('nombre') ?>
-    Apellidos:<input type="text" name="apellidos" class="form-control"
-        value="<?= $valida->getValor('apellidos') ?>"><br>
+    Apellidos:<input type="text" name="apellidos" class="form-control" value="<?= $valida->getValor('apellidos') ?>"><br>
     <?= $valida->ImprimirError('apellidos') ?>
     Email:<input type="texto" name="email" class="form-control" value="<?= $valida->getValor('email') ?>"><br>
     <?= $valida->ImprimirError('dni') ?>

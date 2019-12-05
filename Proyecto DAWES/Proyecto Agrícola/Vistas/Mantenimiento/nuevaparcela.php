@@ -32,19 +32,15 @@ if (!empty($_POST)) {
 }
 ?>
 <form action="" method="post">
-    Id Parcela:<input type="text" name="id_parcela" class="form-control"
-        value="<?= $valida->getValor('id_parcela') ?>"><br>
+    Id Parcela:<input type="text" name="id_parcela" class="form-control" value="<?= $valida->getValor('id_parcela') ?>"><br>
     <?= $valida->ImprimirError('id_parcela') ?>
     Nombre:<input type="text" name="nombre" class="form-control" value="<?= $valida->getValor('nombre') ?>"><br>
     <?= $valida->ImprimirError('nombre') ?>
-    Numero Parcela:<input type="text" name="numeroParcela" class="form-control"
-        value="<?= $valida->getValor('numeroParcela') ?>"><br>
+    Numero Parcela:<input type="text" name="numeroParcela" class="form-control" value="<?= $valida->getValor('numeroParcela') ?>"><br>
     <?= $valida->ImprimirError('numeroParcela') ?>
-    Numero Polígono:<input type="texto" name="numeroPoligono" class="form-control"
-        value="<?= $valida->getValor('numeroPoligono') ?>"><br>
+    Numero Polígono:<input type="texto" name="numeroPoligono" class="form-control" value="<?= $valida->getValor('numeroPoligono') ?>"><br>
     <?= $valida->ImprimirError('numeroPoligono') ?>
-    Numero Olivos:<input type="texto" name="email" class="form-control"
-        value="<?= $valida->getValor('NumeroOlivos') ?>"><br>
+    Numero Olivos:<input type="texto" name="email" class="form-control" value="<?= $valida->getValor('NumeroOlivos') ?>"><br>
     <?= $valida->ImprimirError('dni') ?>
     <input type="submit" value="Enviar" class="btn btn-primary">
 

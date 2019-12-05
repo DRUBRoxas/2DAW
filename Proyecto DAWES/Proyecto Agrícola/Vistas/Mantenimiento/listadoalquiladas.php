@@ -39,4 +39,3 @@ $sagricultor = Sesion::leer("sagricultor");
     </tbody>
 </table>
 </br>
-<a class="btn btn-primary" href="?menu=nuevoagricultor">Crear agricultor</a>

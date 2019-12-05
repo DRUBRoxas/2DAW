@@ -46,7 +46,7 @@ class Sagricultor
      * @param Agricultor $modificaAgricultor
      * @return void
      */
-    public function updateAgricultor(Agriculto $modificaAgricultor)
+    public function updateAgricultor(Agricultor $modificaAgricultor)
     {
         if (isset($this->agricultores[$modificaAgricultor->getDNI()])) {
             $this->agricultores[$modificaAgricultor->getDNI()] = $modificaAgricultor;
@@ -73,16 +73,29 @@ class Sagricultor
     {
         return $this->agricultores[$dni];
     }
-    public function findMaquinaById(string $codigo)
+
+    public function findMaquinaById(string $Codigo)
     {
-        return $this->maquinas[$codigo];
+        return $this->maquinas[$Codigo];
     }
+
 
     public function addMaquina(Maquina $nuevaMaquina)
     {
         $this->maquinas[$nuevaMaquina->getCodigo()] = $nuevaMaquina;
     }
 
+    public function removeMaquina(Maquina $borradoMaquina)
+    {
+        unset($this->maquinas[$borradoMaquina->getCodigo()]);
+    }
+
+    public function updateMaquina(Maquina $modificaMaquina)
+    {
+        if (isset($this->maquinas[$modificaMaquina->getCodigo()])) {
+            $this->maquinas[$modificaMaquina->getCodigo()] = $modificaMaquina;
+        }
+    }
 
     /**
      * Devuelve la colección de maquinas
