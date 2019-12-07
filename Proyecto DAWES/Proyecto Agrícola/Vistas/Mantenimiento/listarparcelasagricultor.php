@@ -3,6 +3,7 @@ Sesion::iniciar();
 $sagricultor = Sesion::leer("sagricultor");
 $valida = new Validacion();
 $agricultor = $sagricultor->findagricultorById($_GET['dni']);
+$dniag = $_GET['dni'];
 ?>
 
 <h1>MANTENIMIENTO DE AGRICULTORES</h1>
@@ -29,8 +30,8 @@ $agricultor = $sagricultor->findagricultorById($_GET['dni']);
                 echo "<td>" . $parcela->getNum_Olivos() . "</td>";
 
                 echo "<td><a href='?menu=listaactividades&id=$id'>LISTAR ACTIVIDADES</a>&nbsp</td>";
-                echo "<td><a href='?menu=borraparcela&id=$id'>BORRAR</a>&nbsp;
-                 <a href='?menu=modificaparcela&id=$id'>MODIFICAR</a>
+                echo "<td><a href='?menu=borraparcela&id=$id&dni=$dniag'>BORRAR</a>&nbsp;
+                 <a href='?menu=modificaparcela&id=$id&dni=$dniag'>MODIFICAR</a>
                  </td>";
                 echo "</tr>";
             }
@@ -39,4 +40,6 @@ $agricultor = $sagricultor->findagricultorById($_GET['dni']);
     </tbody>
 </table>
 </br>
-<a class="btn btn-primary" href="?menu=nuevaparcela">Crear Parecla</a>
+<?php
+echo "<a class='btn btn-primary' href='?menu=nuevaparcela&dni=$dniag'>Crear Parecla</a>";
+?>

@@ -2,7 +2,8 @@
 Sesion::iniciar();
 $sagricultor = Sesion::leer("sagricultor");
 $valida = new Validacion();
-
+$dni = $_GET['dni'];
+$agricultor = $sagricultor->findagricultorById($_GET['dni']);
 //Si he realizado un submit
 if (!empty($_POST)) {
     //validamos los datos
@@ -17,8 +18,7 @@ if (!empty($_POST)) {
     $valida->EnteroRango('numeroPoligono', 1);
     //valida el numero de olivos
     $valida->EnteroRango('NumeroOlivos', 1);
-    $dni = $_GET['dni'];
-    $agricultor = $sagricultor->findagricultorById($_GET['dni']);
+
     if ($valida->ValidacionPasada()) {
 
         $id_parcela = $_POST["id_parcela"];
@@ -30,6 +30,17 @@ if (!empty($_POST)) {
         $agricultor->addParcela($nuevaParcela);
         Sesion::escribir("sagricultor", $sagricultor);
     }
+}
+
+if (isset($_POST['cancelar'])) {
+    header("location:?menu=listarparcelasagricultor&dni=$dni");
+} else {
+    $Parcela = $agricultor->findParcelaById($_GET['id']);
+    $_POST['id_parcela'] = $Parcela->getId_parcela();
+    $_POST['nombre'] = $Parcela->getNombre();
+    $_POST['numeroParcela'] = $Parcela->getNum_parcela();
+    $_POST['numeroPoligono'] = $Parcela->getNum_poligono();
+    $_POST['NumeroOlivos'] = $Parcela->getNum_Olivos();
 }
 ?>
 <form action="" method="post">
@@ -48,7 +59,5 @@ if (!empty($_POST)) {
 </form>
 <br>
 <?php
-$dni = $_GET['dni'];
-
-echo "<a class='btn btn-primary' href='?menu=listarparcelasagricultor&dni=$dni'>Volver al listado</a>";
+echo "<a class='btn btn-primary' href='?menu=listarparcelasagricultor&dni=$dni'>Crear Parecla</a>";
 ?>

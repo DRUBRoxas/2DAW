@@ -18,6 +18,9 @@ if (isset($_GET['menu'])) {
     if ($_GET['menu'] == "modificaagricultor") {
         require_once './Vistas/Mantenimiento/modificaagricultor.php';
     }
+    if ($_GET['menu'] == "modificaparcela") {
+        require_once './Vistas/Mantenimiento/modificarparcelas.php';
+    }
     if ($_GET['menu'] == "modificamaquina") {
         require_once './Vistas/Mantenimiento/modificamaquina.php';
     }
@@ -26,6 +29,9 @@ if (isset($_GET['menu'])) {
     }
     if ($_GET['menu'] == "borramaquina") {
         require_once './Vistas/Mantenimiento/borrarmaquina.php';
+    }
+    if ($_GET['menu'] == "borraparcela") {
+        require_once './Vistas/Mantenimiento/borrarparcela.php';
     }
     if ($_GET['menu'] == "login") {
         require_once './Vistas/Login/autentifica.php';

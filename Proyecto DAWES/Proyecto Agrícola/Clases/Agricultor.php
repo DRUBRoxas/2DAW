@@ -145,4 +145,9 @@ class Agricultor
             $this->parcelas[$modificaparcela->getId_parcela()] = $modificaparcela;
         }
     }
+
+    public function findParcelaById(string $id)
+    {
+        return $this->parcelas[$id];
+    }
 }

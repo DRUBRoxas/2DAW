@@ -1,5 +1,5 @@
 <?php
-class Actividades
+class Actividad
 {
     private $id_actividad;
     private $titulo;
