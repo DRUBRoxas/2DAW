@@ -44,7 +44,7 @@ if (isset($_POST['cancelar'])) {
 }
 ?>
 <form action="" method="post">
-    Id Parcela:<input type="text" name="id_parcela" class="form-control" value="<?= $valida->getValor('id_parcela') ?>"><br>
+    Id Parcela:<input type="text" name="id_parcela" disabled class="form-control" value="<?= $valida->getValor('id_parcela') ?>"><br>
     <?= $valida->ImprimirError('id_parcela') ?>
     Nombre:<input type="text" name="nombre" class="form-control" value="<?= $valida->getValor('nombre') ?>"><br>
     <?= $valida->ImprimirError('nombre') ?>

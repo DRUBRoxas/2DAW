@@ -6,7 +6,7 @@ $agricultor = $sagricultor->findagricultorById($_GET['dni']);
 $dniag = $_GET['dni'];
 ?>
 
-<h1>MANTENIMIENTO DE AGRICULTORES</h1>
+<h1>MANTENIMIENTO DE PARCELAS</h1>
 <table class="table">
     <thead>
         <tr>
@@ -29,7 +29,7 @@ $dniag = $_GET['dni'];
                 echo "<td>" . $parcela->getNum_poligono() . "</td>";
                 echo "<td>" . $parcela->getNum_Olivos() . "</td>";
 
-                echo "<td><a href='?menu=listaactividades&id=$id'>LISTAR ACTIVIDADES</a>&nbsp</td>";
+                echo "<td><a href='?menu=listaactividades&id=$id&dni=$dniag'>LISTAR ACTIVIDADES</a>&nbsp</td>";
                 echo "<td><a href='?menu=borraparcela&id=$id&dni=$dniag'>BORRAR</a>&nbsp;
                  <a href='?menu=modificaparcela&id=$id&dni=$dniag'>MODIFICAR</a>
                  </td>";
@@ -41,5 +41,5 @@ $dniag = $_GET['dni'];
 </table>
 </br>
 <?php
-echo "<a class='btn btn-primary' href='?menu=nuevaparcela&dni=$dniag'>Crear Parecla</a>";
+echo "<a class='btn btn-primary' href='?menu=nuevaparcela&dni=$dniag'>Crear Parcela</a>";
 ?>

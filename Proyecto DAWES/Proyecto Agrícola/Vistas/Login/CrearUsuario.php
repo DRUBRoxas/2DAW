@@ -1,17 +1,17 @@
 <?php
 $valida = new Validacion();
+$bd = new GBD("127.0.0.1", "agricultor", "root", "");
 if (isset($_POST['submit'])) {
     $valida->Requerido('usuario');
     $valida->Requerido('contrasena');
     //Comprobamos validacion
     if ($valida->ValidacionPasada()) {
-        if (Login::Identifica(
-            $_POST['usuario'],
-            $_POST['contrasena'],
-            isset($_POST['recuerdame']) ? $_POST['recuerdame'] : false
-        )) {
-            $url = $_GET['returnurl'];
-            header("location:?menu=" . $url);
+        if (Login::ExisteUsuario($_POST['usuario'])) {
+            $mensaje = "Usuario ya Registrado";
+            echo "<script type='text/javascript'>alert('$message');</script>";
+        } else {
+            $usuario = ["usuario" => $_POST['usuario'], "contrasena" => $_POST['contrasena']];
+            $bd->add("usuario", $usuario);
         }
     }
 }
@@ -19,7 +19,7 @@ if (isset($_POST['submit'])) {
 <div class='w-50 p-3 container'>
     <div class='login-form'>
         <form action='' method='post' novalidate>
-            <h2 class='text-center'>Identificate</h2>
+            <h2 class='text-center'>Registrarse</h2>
             <div class='form-group'>
                 <input type='text' class='form-control' name='usuario' placeholder='Usuario' required='required'>
                 <?= $valida->ImprimirError('usuario') ?>
@@ -29,13 +29,8 @@ if (isset($_POST['submit'])) {
                 <?= $valida->ImprimirError('contrasena') ?>
             </div>
             <div class='form-group'>
-                <button type='submit' name='submit' class='btn btn-primary btn-block'>Logueate</button>
-            </div>
-            <div class='clearfix'>
-                <label class='pull-left checkbox-inline'>
-                    <input type='checkbox' name='recuerdame'> Recuerdame</label>
+                <button type='submit' name='submit' class='btn btn-primary btn-block'>Registrarse</button>
             </div>
         </form>
-        <p class='text-center'><a href='?menu=registro'>Crear una Cuenta</a></p>
     </div>
 </div>

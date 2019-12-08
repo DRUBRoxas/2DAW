@@ -41,7 +41,7 @@ if (isset($_POST['cancelar'])) {
 
 ?>
 <form action="" method="post">
-    codigo:<input type="text" disabled name="codigo" class="form-control" required value="<?= $valida->getValor('codigo') ?>"><br>
+    codigo:<input type="text" name="codigo" class="form-control" required value="<?= $valida->getValor('codigo') ?>"><br>
     <?= $valida->ImprimirError('codigo') ?>
     Nombre:<input type="text" name="nombre" requerido class="form-control" value="<?= $valida->getValor('nombre') ?>"><br>
     <?= $valida->ImprimirError('nombre') ?>

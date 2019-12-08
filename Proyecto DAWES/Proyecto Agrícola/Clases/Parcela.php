@@ -7,6 +7,7 @@ class Parcela
     private $num_poligono;
     private $Num_Olivos;
 
+    private $Actividades;
     //Constructor
     public function __construct(string $id_parcela, string $nombre, string $num_parcela, string $num_poligono, string $Num_Olivos)
     {
@@ -17,10 +18,6 @@ class Parcela
         $this->Num_Olivos = $Num_Olivos;
     }
 
-    public function addActividad(Actividad $nuevaAct)
-    {
-        $this->Actividades[$nuevaAct->getId_act()] = $nuevaAct;
-    }
 
     /**
      * Get the value of id_parcela
@@ -120,5 +117,34 @@ class Parcela
         $this->Num_Olivos = $Num_Olivos;
 
         return $this;
+    }
+
+    public function addActividad(Actividad $nuevaAct)
+    {
+        $this->Actividades[$nuevaAct->getId_actividad()] = $nuevaAct;
+    }
+
+    public function AllActividades()
+    {
+        return $this->Actividades;
+    }
+
+
+    public function removeActividad(Actividad $borradoactividad)
+    {
+        unset($this->Actividades[$borradoactividad->getId_actividad()]);
+    }
+
+
+    public function updateActividad(Actividad $modificaactividad)
+    {
+        if (isset($this->Actividades[$modificaactividad->getId_actividad()])) {
+            $this->Actividades[$modificaactividad->getId_actividad()] = $modificaactividad;
+        }
+    }
+
+    public function findActividadById(string $id)
+    {
+        return $this->Actividades[$id];
     }
 }

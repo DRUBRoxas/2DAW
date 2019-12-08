@@ -15,6 +15,9 @@ if (isset($_GET['menu'])) {
     if ($_GET['menu'] == "nuevaparcela") {
         require_once './Vistas/Mantenimiento/nuevaparcela.php';
     }
+    if ($_GET['menu'] == "nuevaactividad") {
+        require_once './Vistas/Mantenimiento/nuevaactividad.php';
+    }
     if ($_GET['menu'] == "modificaagricultor") {
         require_once './Vistas/Mantenimiento/modificaagricultor.php';
     }
@@ -23,6 +26,9 @@ if (isset($_GET['menu'])) {
     }
     if ($_GET['menu'] == "modificamaquina") {
         require_once './Vistas/Mantenimiento/modificamaquina.php';
+    }
+    if ($_GET['menu'] == "modificaactividad") {
+        require_once './Vistas/Mantenimiento/modificaactividad.php';
     }
     if ($_GET['menu'] == "borraagricultor") {
         require_once './Vistas/Mantenimiento/borraagricultor.php';
@@ -33,14 +39,23 @@ if (isset($_GET['menu'])) {
     if ($_GET['menu'] == "borraparcela") {
         require_once './Vistas/Mantenimiento/borrarparcela.php';
     }
+    if ($_GET['menu'] == "borraactividad") {
+        require_once './Vistas/Mantenimiento/borraractividad.php';
+    }
     if ($_GET['menu'] == "login") {
         require_once './Vistas/Login/autentifica.php';
+    }
+    if ($_GET['menu'] == "registro") {
+        require_once './Vistas/Login/CrearUsuario.php';
     }
     if ($_GET['menu'] == "cerrarsesion") {
         require_once './Vistas/Login/cerrarsesion.php';
     }
     if ($_GET['menu'] == "listarparcelasagricultor") {
         require_once './Vistas/Mantenimiento/listarparcelasagricultor.php';
+    }
+    if ($_GET['menu'] == "listaactividades") {
+        require_once './Vistas/Mantenimiento/listaractividades.php';
     }
     if ($_GET['menu'] == "nuevamaquina") {
         require_once './Vistas/Mantenimiento/nuevamaquina.php';
