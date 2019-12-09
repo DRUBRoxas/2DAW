@@ -12,6 +12,7 @@ if (isset($_POST['submit'])) {
         } else {
             $usuario = ["usuario" => $_POST['usuario'], "contrasena" => $_POST['contrasena']];
             $bd->add("usuario", $usuario);
+            header("location:?menu=mantenimiento");
         }
     }
 }

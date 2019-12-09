@@ -10,14 +10,14 @@ class Agricultor
     //Propiedad que nade de la relación entre Agricultor y parcela
     private $parcelas;
 
-    public function __construct(string $dni, string $nombre, string $apellidos, string $email)
+    /*public function __construct(string $dni, string $nombre, string $apellidos, string $email)
     {
         $this->dni = $dni;
         $this->nombre = $nombre;
         $this->apellidos = $apellidos;
         $this->email = $email;
     }
-
+*/
     /**
      * Get the value of dni
      */

@@ -63,6 +63,9 @@ class Sagricultor
         return $this->agricultores;
     }
 
+    public function recuperarDatos()
+    { }
+
     /**
      * Devuelve un agricultor
      *
@@ -105,5 +108,12 @@ class Sagricultor
     public function allMaquinas()
     {
         return $this->maquinas;
+    }
+
+    public function getAgricultores()
+    {
+        $bd = new GBD("127.0.0.1", "agricultor", "root", "");
+        $agricultores = $bd->getAll("Agricultor");
+        return $agricultores;
     }
 }
