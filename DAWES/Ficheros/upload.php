@@ -3,11 +3,6 @@ if (isset($_FILES['fichero'])) {
 
     move_uploaded_file($_FILES['fichero']['tmp_name'], "./imagenes/imagen1.jpg");
 }
-if (isset($_FILES['fichero2'])) {
-
-    $foto = file_get_contents($_FILES['fichero2']['tmp_name']);
-    $foto = base64_encode($foto);
-}
 ?>
 
 <form action='' method='post' enctype='multipart/form-data'>

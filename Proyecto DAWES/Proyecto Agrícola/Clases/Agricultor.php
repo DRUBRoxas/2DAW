@@ -10,14 +10,14 @@ class Agricultor
     //Propiedad que nade de la relación entre Agricultor y parcela
     private $parcelas;
 
-    /*public function __construct(string $dni, string $nombre, string $apellidos, string $email)
+    public function __construct(string $dni, string $nombre, string $apellidos, string $email)
     {
         $this->dni = $dni;
         $this->nombre = $nombre;
         $this->apellidos = $apellidos;
         $this->email = $email;
     }
-*/
+
     /**
      * Get the value of dni
      */
@@ -149,5 +149,12 @@ class Agricultor
     public function findParcelaById(string $id)
     {
         return $this->parcelas[$id];
+    }
+
+    public function getAgricultores()
+    {
+        $bd = new GBD("127.0.0.1", "agricultor", "root", "");
+        $agricultores = $bd->getAll("Agricultor");
+        return $agricultores;
     }
 }
