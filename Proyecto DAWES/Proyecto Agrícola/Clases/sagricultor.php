@@ -12,8 +12,16 @@ class Sagricultor
     {
         $this->nombre = $nombre;
         $this->cif = $cif;
+        $this->CargarAgricultores();
     }
 
+    private function CargarAgricultores()
+    {
+        $datos = $this->getAgricultores();
+        foreach ($datos as $agricultor) {
+            $this->CargaAgricultor($agricultor);
+        }
+    }
     /**
      * Añade un nuevo agricultor a la colección 
      *
@@ -21,6 +29,11 @@ class Sagricultor
      * @return void
      */
     public function addAgricultor(Agricultor $nuevoAgricultor)
+    {
+        $nuevoAgricultor->setEstado(Estado_Enum::NUEVO);
+        $this->agricultores[$nuevoAgricultor->getDni()] = $nuevoAgricultor;
+    }
+    public function CargaAgricultor(Agricultor $nuevoAgricultor)
     {
         $this->agricultores[$nuevoAgricultor->getDni()] = $nuevoAgricultor;
     }
@@ -33,7 +46,8 @@ class Sagricultor
      */
     public function removeAgricultor(Agricultor $borradoAgricultor)
     {
-        unset($this->agricultores[$borradoAgricultor->getDNI()]);
+        //unset($this->agricultores[$borradoAgricultor->getDNI()]);
+        $borradoAgricultor->setEstado(Estado_Enum::BORRADO);
     }
 
     public function alquilaMaquina(Maquina $alquilaMaquina)
@@ -49,6 +63,7 @@ class Sagricultor
     public function updateAgricultor(Agricultor $modificaAgricultor)
     {
         if (isset($this->agricultores[$modificaAgricultor->getDNI()])) {
+            $modificaAgricultor->setEstado(Estado_Enum::MODIFICADO);
             $this->agricultores[$modificaAgricultor->getDNI()] = $modificaAgricultor;
         }
     }
@@ -113,7 +128,31 @@ class Sagricultor
     public function getAgricultores()
     {
         $bd = new GBD("127.0.0.1", "agricultor", "root", "");
-        $agricultores = $bd->getAll("Agricultor");
+        $agricultores = $bd->getAll("agricultor");
         return $agricultores;
+    }
+
+    public function GrabarAgricultores()
+    {
+        $bd = new GBD("localhost", "agricultor", "root", "");
+        foreach ($this->agricultores as $dni => $agricultor) {
+            switch ($agricultor->getEstado()) {
+                case Estado_Enum::MODIFICADO:
+                    $bd->update("agricultor", get_object_vars($agricultor), [$agricultor->getDni()]);
+                    $agricultor->setEstado(Estado_Enum::SIN_CAMBIOS);
+                    break;
+                case Estado_Enum::BORRADO:
+                    $bd->delete("agricultor", [$agricultor->getDni()]);
+                    unset($this->agricultores[$agricultor->dni]);
+                    break;
+                case Estado_Enum::NUEVO:
+                    $bd->add("agricultor", [
+                        "dni" => $agricultor->dni, "nombre" => $agricultor->nombre,
+                        "apellidos" => $agricultor->apellidos, "email" => $agricultor->email
+                    ]);
+                    $agricultor->setEstado(Estado_Enum::SIN_CAMBIOS);
+                    break;
+            }
+        }
     }
 }

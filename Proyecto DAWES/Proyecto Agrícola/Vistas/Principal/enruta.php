@@ -60,6 +60,9 @@ if (isset($_GET['menu'])) {
     if ($_GET['menu'] == "nuevamaquina") {
         require_once './Vistas/Mantenimiento/nuevamaquina.php';
     }
+    if ($_GET['menu'] == "guardadatos") {
+        require_once './Vistas/Mantenimiento/guardadatos.php';
+    }
     if ($_GET['menu'] == "alquilarmaquina") {
         require_once './Vistas/Mantenimiento/alquilarmaquinas.php';
     }

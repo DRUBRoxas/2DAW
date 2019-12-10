@@ -1,21 +1,24 @@
 <?php
 class Agricultor
 {
-    private $dni;
-    private $nombre;
-    private $apellidos;
-    private $email;
+    public $dni;
+    public $nombre;
+    public $apellidos;
+    public $email;
+    public $estado;
 
 
     //Propiedad que nade de la relación entre Agricultor y parcela
-    private $parcelas;
 
-    public function __construct(string $dni, string $nombre, string $apellidos, string $email)
+
+    public function __construct(string $dni = '', string $nombre = '', string $apellidos = '', string $email = '')
     {
-        $this->dni = $dni;
-        $this->nombre = $nombre;
-        $this->apellidos = $apellidos;
-        $this->email = $email;
+        $this->dni = empty($dni) ? $this->dni : $dni;
+        $this->nombre =  empty($nombre) ? $this->nombre : $nombre;
+        $this->apellidos =  empty($apellidos) ? $this->apellidos : $apellidos;
+        $this->email = empty($email) ? $this->email : $email;
+        $this->estado = Estado_Enum::SIN_CAMBIOS;
+        $this->TraeParcelas();
     }
 
     /**
@@ -107,6 +110,7 @@ class Agricultor
      */
     public function addparcela(parcela $nuevaparcela)
     {
+        $nuevaparcela->setEstado(Estado_Enum::NUEVO);
         $this->parcelas[$nuevaparcela->getId_parcela()] = $nuevaparcela;
     }
 
@@ -129,7 +133,8 @@ class Agricultor
      */
     public function removeparcela(parcela $borradoparcela)
     {
-        unset($this->parcelas[$borradoparcela->getId_parcela()]);
+        $borradoparcela->setEstado(Estado_Enum::BORRADO);
+        // unset($this->parcelas[$borradoparcela->getId_parcela()]);
     }
 
     /**
@@ -142,7 +147,19 @@ class Agricultor
     public function updateparcela(parcela $modificaparcela)
     {
         if (isset($this->parcelas[$modificaparcela->getId_parcela()])) {
+            $modificaparcela->setEstado(Estado_Enum::MODIFICADO);
             $this->parcelas[$modificaparcela->getId_parcela()] = $modificaparcela;
+        }
+    }
+
+    public function TraeParcelas()
+    {
+        $bd = new GBD("localhost", "agricultor", "root", "");
+        $todasParcelas = $bd->getAll("parcela");
+        foreach ($todasParcelas as $parcela) {
+            if ($this->getDni() === $parcela->getAgricultores_dni()) {
+                $this->parcelas[$parcela->getId_parcela()] = $parcela;
+            }
         }
     }
 
@@ -156,5 +173,25 @@ class Agricultor
         $bd = new GBD("127.0.0.1", "agricultor", "root", "");
         $agricultores = $bd->getAll("Agricultor");
         return $agricultores;
+    }
+
+    /**
+     * Get the value of estado
+     */
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+
+    /**
+     * Set the value of estado
+     *
+     * @return  self
+     */
+    public function setEstado($estado)
+    {
+        $this->estado = $estado;
+
+        return $this;
     }
 }

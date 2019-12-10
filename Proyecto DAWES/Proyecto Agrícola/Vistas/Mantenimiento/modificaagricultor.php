@@ -24,7 +24,8 @@ if (!empty($_POST)) {
         $apellidos = $_POST["apellidos"];
         $email = $_POST["email"];
         $nuevoAgricultor = new Agricultor($dni, $nombre, $apellidos, $email);
-        $sagricultor->addAgricultor($nuevoAgricultor);
+        $nuevoAgricultor->setEstado(Estado_Enum::MODIFICADO);
+        $sagricultor->CargaAgricultor($nuevoAgricultor);
         Sesion::escribir("sagricultor", $sagricultor);
         header("location:?menu=listaragricultores");
     }

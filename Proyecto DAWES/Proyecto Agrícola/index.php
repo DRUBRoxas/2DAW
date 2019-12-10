@@ -12,12 +12,8 @@ if (!Sesion::leer("sagricultor")) {
     $sagricultor = new Sagricultor("SAgricultores S.L.", "14-666-P");
     Sesion::escribir("sagricultor", $sagricultor);
 }
-/**$sagricultor = Sesion::leer('sagricultor');
-$datos = $sagricultor->getAgricultores();
-foreach ($datos as $agricultor) {
-    $sagricultor->addAgricultor($agricultor);
-}
- */
+
+
 class Principal
 {
     public static function main()
