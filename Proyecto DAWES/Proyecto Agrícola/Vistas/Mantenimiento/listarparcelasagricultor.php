@@ -19,21 +19,24 @@ $dniag = $_GET['dni'];
     </thead>
     <tbody>
         <?php
+        $parcelas = $sagricultor->allParcelas();
         //Bucle para recorrer colección de Parcelas
-        if ($agricultor->allParcelas() != null) {
-            foreach ($agricultor->allParcelas() as $id => $parcela) {
-                echo "<tr>";
-                echo "<td>" . $id . "</td>";
-                echo "<td>" . $parcela->getNombre() . "</td>";
-                echo "<td>" . $parcela->getNum_parcela() . "</td>";
-                echo "<td>" . $parcela->getNum_poligono() . "</td>";
-                echo "<td>" . $parcela->getNum_Olivos() . "</td>";
+        if ($parcelas != null) {
+            foreach ($parcelas as $id => $parcela) {
+                if ($parcela->getAgricultores_dni() === $dniag) {
+                    echo "<tr>";
+                    echo "<td>" . $id . "</td>";
+                    echo "<td>" . $parcela->getNombre() . "</td>";
+                    echo "<td>" . $parcela->getNum_parcela() . "</td>";
+                    echo "<td>" . $parcela->getNum_poligono() . "</td>";
+                    echo "<td>" . $parcela->getNum_Olivos() . "</td>";
 
-                echo "<td><a href='?menu=listaactividades&id=$id&dni=$dniag'>LISTAR ACTIVIDADES</a>&nbsp</td>";
-                echo "<td><a href='?menu=borraparcela&id=$id&dni=$dniag'>BORRAR</a>&nbsp;
-                 <a href='?menu=modificaparcela&id=$id&dni=$dniag'>MODIFICAR</a>
-                 </td>";
-                echo "</tr>";
+                    echo "<td><a href='?menu=listaactividades&id=$id&dni=$dniag'>LISTAR ACTIVIDADES</a>&nbsp</td>";
+                    echo "<td><a href='?menu=borraparcela&id=$id&dni=$dniag'>BORRAR</a>&nbsp;
+                     <a href='?menu=modificaparcela&id=$id&dni=$dniag'>MODIFICAR</a>
+                     </td>";
+                    echo "</tr>";
+                }
             }
         }
         ?>

@@ -8,34 +8,30 @@ $agricultor = $sagricultor->findagricultorById($_GET['dni']);
 if (!empty($_POST)) {
     //validamos los datos
     //validamos el id de la parcela
-    $valida->validarIDParcela('id_parcela');
+    //  $valida->validarIDParcela('id_parcela');
 
     //valida el nombre, longitud minima de 3 y máxima de 20
-    $valida->CadenaRango('nombre', 20, 3);
+    //$valida->CadenaRango('nombre', 20, 3);
     //valida el número de la parcela
-    $valida->EnteroRango('numeroParcela', 1);
+    //$valida->EnteroRango('numeroParcela', 1);
     //valida el número de Polígono
-    $valida->EnteroRango('numeroPoligono', 1);
+    //$valida->EnteroRango('numeroPoligono', 1);
     //valida el numero de olivos
-    $valida->EnteroRango('NumeroOlivos', 1);
-
-    if ($valida->ValidacionPasada()) {
-
-        $id_parcela = $_POST["id_parcela"];
-        $nombre = $_POST["nombre"];
-        $numeroParcela = $_POST["numeroParcela"];
-        $numeroPoligono = $_POST["numeroPoligono"];
-        $numeroOlivos = $_POST["NumeroOlivos"];
-        $nuevaParcela = new Parcela($id_parcela, $nombre, $numeroParcela, $numeroPoligono, $numeroOlivos, $dni);
-        $agricultor->addParcela($nuevaParcela);
-        Sesion::escribir("sagricultor", $sagricultor);
-    }
+    //$valida->EnteroRango('NumeroOlivos', 1);
+    $id_parcela = $_POST["id_parcela"];
+    $nombre = $_POST["nombre"];
+    $numeroParcela = $_POST["numeroParcela"];
+    $numeroPoligono = $_POST["numeroPoligono"];
+    $numeroOlivos = $_POST["NumeroOlivos"];
+    $nuevaParcela = new Parcela($id_parcela, $nombre, $numeroParcela, $numeroPoligono, $numeroOlivos, $dni);
+    $sagricultor->updateParcela($nuevaParcela);
+    Sesion::escribir("sagricultor", $sagricultor);
 }
 
 if (isset($_POST['cancelar'])) {
     header("location:?menu=listarparcelasagricultor&dni=$dni");
 } else {
-    $Parcela = $agricultor->findParcelaById($_GET['id']);
+    $Parcela = $sagricultor->findParcelaById($_GET['id']);
     $_POST['id_parcela'] = $Parcela->getId_parcela();
     $_POST['nombre'] = $Parcela->getNombre();
     $_POST['numeroParcela'] = $Parcela->getNum_parcela();
@@ -44,7 +40,7 @@ if (isset($_POST['cancelar'])) {
 }
 ?>
 <form action="" method="post">
-    Id Parcela:<input type="text" name="id_parcela" disabled class="form-control" value="<?= $valida->getValor('id_parcela') ?>"><br>
+    Id Parcela:<input type="text" name="id_parcela" class="form-control" value="<?= $valida->getValor('id_parcela') ?>"><br>
     <?= $valida->ImprimirError('id_parcela') ?>
     Nombre:<input type="text" name="nombre" class="form-control" value="<?= $valida->getValor('nombre') ?>"><br>
     <?= $valida->ImprimirError('nombre') ?>
@@ -59,5 +55,5 @@ if (isset($_POST['cancelar'])) {
 </form>
 <br>
 <?php
-echo "<a class='btn btn-primary' href='?menu=listarparcelasagricultor&dni=$dni'>Crear Parecla</a>";
+echo "<a class='btn btn-primary' href='?menu=listarparcelasagricultor&dni=$dni'>Volver a Listados</a>";
 ?>

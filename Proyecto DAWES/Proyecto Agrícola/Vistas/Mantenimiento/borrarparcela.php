@@ -3,7 +3,7 @@ Sesion::iniciar();
 $sagricultor = Sesion::leer('sagricultor');
 $agricultor = $sagricultor->findagricultorById($_GET['dni']);
 if (isset($_POST['borrar'])) {
-    $agricultor->removeParcela($agricultor->findParcelaById($_GET['id']));
+    $sagricultor->removeParcela($sagricultor->findParcelaById($_GET['id']));
     Sesion::escribir('sagricultor', $sagricultor);
     header('location:?menu=listarparcelasagricultor&dni=' . $_GET['dni']);
 }

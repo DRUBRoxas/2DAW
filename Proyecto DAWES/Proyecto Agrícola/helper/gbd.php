@@ -90,7 +90,7 @@ class GBD
         $sql .= $condicion;
         try {
             $consulta = $this->conexion->prepare($sql);
-            $consulta->execute(array($valoresid));
+            $consulta->execute($valoresid);
             $datos = $consulta->fetchAll(PDO::FETCH_CLASS, $tabla);
             return $datos;
         } catch (PDOException $e) {
@@ -146,7 +146,7 @@ class GBD
         $sql = "update $tabla set ";
         $campos = implode("=?, ", array_keys($camposvalores));
         $campos .= "=?";
-        $sql .= $campos;
+        $sql .= $campos . " where ";
 
         $claves = $this->getPrimaryKey($tabla);
         $cuantos = count($claves);
@@ -162,7 +162,7 @@ class GBD
         try {
             $consulta = $this->conexion->prepare($sql);
             $valores = array_values($camposvalores);
-            $parametros = array_merge($valores, $valoresid);
+            $parametros = array_merge($valores, array_values($valoresid));
             $consulta->execute($parametros);
         } catch (PDOException $e) {
             throw new PDOException("Error modificando fila: " . $e->getMessage());

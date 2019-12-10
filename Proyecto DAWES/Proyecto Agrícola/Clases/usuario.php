@@ -23,7 +23,7 @@ class Usuario
             $idroles = $bd->findByOne("roles_has_usuario", ["usuario_nombre" => $usuario->getUsuario()]);
             $roles = null;
             foreach ($idroles as $idrol) {
-                $roles[] = $bd->findById("Roles", $idrol->getRoles_idRoles())[0];
+                $roles[] = $bd->findById("Roles", (array) $idrol->getRoles_idRoles())[0];
             }
             $usuario->setRoles($roles);
         }

@@ -9,17 +9,15 @@ class Parcela
     public $agricultores_dni;
     public $estado;
 
-
-    public $Actividades;
     //Constructor
     public function __construct(string $id_parcela = '', string $nombre = '', string $num_parcela = '', string $num_poligono = '', string $Num_Olivos = '', string $agricultores_dni = '')
     {
-        $this->id_parcela = empty($id_parcela) ? $this->id_parcela : $id_parcela;;
-        $this->nombre = empty($nombre) ? $this->nombre : $nombre;;
-        $this->num_parcela = empty($num_parcela) ? $this->num_parcela : $num_parcela;;
-        $this->num_poligono = empty($num_poligono) ? $this->num_poligono : $num_poligono;;
-        $this->Num_Olivos = empty($Num_Olivos) ? $this->Num_Olivos : $Num_Olivos;;
-        $this->agricultores_dni = empty($agricultores_dni) ? $this->agricultores_dni : $agricultores_dni;;
+        $this->id_parcela = empty($id_parcela) ? $this->id_parcela : $id_parcela;
+        $this->nombre = empty($nombre) ? $this->nombre : $nombre;
+        $this->num_parcela = empty($num_parcela) ? $this->num_parcela : $num_parcela;
+        $this->num_poligono = empty($num_poligono) ? $this->num_poligono : $num_poligono;
+        $this->Num_Olivos = empty($Num_Olivos) ? $this->Num_Olivos : $Num_Olivos;
+        $this->agricultores_dni = empty($agricultores_dni) ? $this->agricultores_dni : $agricultores_dni;
         $this->estado = Estado_Enum::SIN_CAMBIOS;
     }
 

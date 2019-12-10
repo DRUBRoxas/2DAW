@@ -18,7 +18,6 @@ class Agricultor
         $this->apellidos =  empty($apellidos) ? $this->apellidos : $apellidos;
         $this->email = empty($email) ? $this->email : $email;
         $this->estado = Estado_Enum::SIN_CAMBIOS;
-        $this->TraeParcelas();
     }
 
     /**
@@ -108,65 +107,6 @@ class Agricultor
      * 
      * @return void
      */
-    public function addparcela(parcela $nuevaparcela)
-    {
-        $nuevaparcela->setEstado(Estado_Enum::NUEVO);
-        $this->parcelas[$nuevaparcela->getId_parcela()] = $nuevaparcela;
-    }
-
-    /**
-     * Devuelve todas las parcelas
-     *
-     * @return array
-     */
-    public function allparcelas()
-    {
-        return $this->parcelas;
-    }
-
-    /**
-     * Borra un parcela de la colección
-     *
-     * @param parcela $borradoparcela
-     * 
-     * @return void
-     */
-    public function removeparcela(parcela $borradoparcela)
-    {
-        $borradoparcela->setEstado(Estado_Enum::BORRADO);
-        // unset($this->parcelas[$borradoparcela->getId_parcela()]);
-    }
-
-    /**
-     * Modifica los datos de un parcela si existe
-     *
-     * @param parcela $modificaparcela
-     * 
-     * @return void
-     */
-    public function updateparcela(parcela $modificaparcela)
-    {
-        if (isset($this->parcelas[$modificaparcela->getId_parcela()])) {
-            $modificaparcela->setEstado(Estado_Enum::MODIFICADO);
-            $this->parcelas[$modificaparcela->getId_parcela()] = $modificaparcela;
-        }
-    }
-
-    public function TraeParcelas()
-    {
-        $bd = new GBD("localhost", "agricultor", "root", "");
-        $todasParcelas = $bd->getAll("parcela");
-        foreach ($todasParcelas as $parcela) {
-            if ($this->getDni() === $parcela->getAgricultores_dni()) {
-                $this->parcelas[$parcela->getId_parcela()] = $parcela;
-            }
-        }
-    }
-
-    public function findParcelaById(string $id)
-    {
-        return $this->parcelas[$id];
-    }
 
     public function getAgricultores()
     {

@@ -3,6 +3,8 @@ Sesion::iniciar();
 $sagricultor = Sesion::leer('sagricultor');
 if (isset($_POST['Enviar'])) {
     $sagricultor->GrabarAgricultores();
+    $sagricultor->GrabarParcelas();
+
     header('location:?menu=listaragricultores');
 }
 if (isset($_POST['cancelar'])) {

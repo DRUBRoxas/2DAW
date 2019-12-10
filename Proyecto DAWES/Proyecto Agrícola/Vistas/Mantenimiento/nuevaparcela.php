@@ -27,7 +27,7 @@ if (!empty($_POST)) {
         $numeroPoligono = $_POST["numeroPoligono"];
         $numeroOlivos = $_POST["NumeroOlivos"];
         $nuevaParcela = new Parcela($id_parcela, $nombre, $numeroParcela, $numeroPoligono, $numeroOlivos, $dni);
-        $agricultor->addParcela($nuevaParcela);
+        $sagricultor->addParcela($nuevaParcela);
         Sesion::escribir("sagricultor", $sagricultor);
     }
 }

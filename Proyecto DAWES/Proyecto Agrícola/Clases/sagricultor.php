@@ -7,13 +7,19 @@ class Sagricultor
     //Propiedad que viene de la relación entre La empresa y Agricultor
     private $agricultores;
     private $maquinas;
+    private $parcelas;
     //Constructor
     public function __construct(string $nombre, string $cif)
     {
         $this->nombre = $nombre;
         $this->cif = $cif;
         $this->CargarAgricultores();
+        $this->getParcelas();
     }
+
+
+    //Agricultores
+
 
     private function CargarAgricultores()
     {
@@ -49,11 +55,6 @@ class Sagricultor
         //unset($this->agricultores[$borradoAgricultor->getDNI()]);
         $borradoAgricultor->setEstado(Estado_Enum::BORRADO);
     }
-
-    public function alquilaMaquina(Maquina $alquilaMaquina)
-    {
-        $alquilaMaquina->setEstado(true);
-    }
     /**
      * Modifica los datos de un agricultor si existe
      *
@@ -78,9 +79,6 @@ class Sagricultor
         return $this->agricultores;
     }
 
-    public function recuperarDatos()
-    { }
-
     /**
      * Devuelve un agricultor
      *
@@ -90,6 +88,45 @@ class Sagricultor
     public function findAgricultorById(string $dni)
     {
         return $this->agricultores[$dni];
+    }
+
+
+    public function getAgricultores()
+    {
+        $bd = new GBD("127.0.0.1", "agricultor", "root", "");
+        $agricultores = $bd->getAll("agricultor");
+        return $agricultores;
+    }
+
+    public function GrabarAgricultores()
+    {
+        $bd = new GBD("localhost", "agricultor", "root", "");
+        foreach ($this->agricultores as $dni => $agricultor) {
+            switch ($agricultor->getEstado()) {
+                case Estado_Enum::MODIFICADO:
+                    $bd->update("agricultor", get_object_vars($agricultor), [$agricultor->getDni()]);
+                    $agricultor->setEstado(Estado_Enum::SIN_CAMBIOS);
+                    break;
+                case Estado_Enum::BORRADO:
+                    $bd->delete("agricultor", [$agricultor->getDni()]);
+                    unset($this->agricultores[$agricultor->dni]);
+                    break;
+                case Estado_Enum::NUEVO:
+                    $bd->add("agricultor", [
+                        "dni" => $agricultor->dni, "nombre" => $agricultor->nombre,
+                        "apellidos" => $agricultor->apellidos, "email" => $agricultor->email
+                    ]);
+                    $agricultor->setEstado(Estado_Enum::SIN_CAMBIOS);
+                    break;
+            }
+        }
+    }
+
+    //Maquinas
+
+    public function alquilaMaquina(Maquina $alquilaMaquina)
+    {
+        $alquilaMaquina->setEstado(true);
     }
 
     public function findMaquinaById(string $Codigo)
@@ -125,32 +162,86 @@ class Sagricultor
         return $this->maquinas;
     }
 
-    public function getAgricultores()
+
+
+
+    //==========================================================================//
+
+    //Parcelas
+
+    public function getParcelas()
     {
         $bd = new GBD("127.0.0.1", "agricultor", "root", "");
-        $agricultores = $bd->getAll("agricultor");
-        return $agricultores;
+        $parcelas = $bd->getAll("parcela");
+        foreach ($parcelas as $parcela) {
+            $this->addparcela($parcela);
+        }
     }
 
-    public function GrabarAgricultores()
+    private function CargarParcelas()
+    {
+        $datos = $this->getAgricultores();
+        foreach ($datos as $agricultor) {
+            $this->CargaAgricultor($agricultor);
+        }
+    }
+
+    public function addparcela(parcela $nuevaparcela)
+    {
+        $nuevaparcela->setEstado(Estado_Enum::NUEVO);
+        $this->parcelas[$nuevaparcela->getId_parcela()] = $nuevaparcela;
+    }
+    public function añadirparcela(parcela $nuevaparcela)
+    {
+        $this->parcelas[$nuevaparcela->getId_parcela()] = $nuevaparcela;
+    }
+
+
+    public function allparcelas()
+    {
+        return $this->parcelas;
+    }
+
+    public function removeparcela(parcela $borradoparcela)
+    {
+        $borradoparcela->setEstado(Estado_Enum::BORRADO);
+        // unset($this->parcelas[$borradoparcela->getId_parcela()]);
+    }
+
+    public function updateparcela(parcela $modificaparcela)
+    {
+        if (isset($this->parcelas[$modificaparcela->getId_parcela()])) {
+            $modificaparcela->setEstado(Estado_Enum::MODIFICADO);
+            $this->parcelas[$modificaparcela->getId_parcela()] = $modificaparcela;
+        }
+    }
+
+
+    public function findParcelaById(string $id)
+    {
+        return $this->parcelas[$id];
+    }
+
+    public function GrabarParcelas()
     {
         $bd = new GBD("localhost", "agricultor", "root", "");
-        foreach ($this->agricultores as $dni => $agricultor) {
-            switch ($agricultor->getEstado()) {
+        foreach ($this->parcelas as $id => $parcela) {
+            switch ($parcela->getEstado()) {
                 case Estado_Enum::MODIFICADO:
-                    $bd->update("agricultor", get_object_vars($agricultor), [$agricultor->getDni()]);
-                    $agricultor->setEstado(Estado_Enum::SIN_CAMBIOS);
+                    $bd->update("parcela", get_object_vars($parcela), [$parcela->getId_parcela()]);
+                    $parcela->setEstado(Estado_Enum::SIN_CAMBIOS);
                     break;
                 case Estado_Enum::BORRADO:
-                    $bd->delete("agricultor", [$agricultor->getDni()]);
-                    unset($this->agricultores[$agricultor->dni]);
+                    $bd->delete("parcela", [$parcela->getId_parcela()]);
+                    unset($this->parcelas[$parcela->id_parcela]);
                     break;
                 case Estado_Enum::NUEVO:
-                    $bd->add("agricultor", [
-                        "dni" => $agricultor->dni, "nombre" => $agricultor->nombre,
-                        "apellidos" => $agricultor->apellidos, "email" => $agricultor->email
+                    $bd->add("parcela", [
+                        "id_parcela" => $parcela->id_parcela, "nombre" => $parcela->nombre,
+                        "num_parcela" => $parcela->num_parcela, "num_poligono" => $parcela->num_poligono,
+                        "Num_Olivos" => $parcela->Num_Olivos, "agricultores_dni" => $parcela->agricultores_dni
                     ]);
-                    $agricultor->setEstado(Estado_Enum::SIN_CAMBIOS);
+                    $parcela->setEstado(Estado_Enum::SIN_CAMBIOS);
                     break;
             }
         }
