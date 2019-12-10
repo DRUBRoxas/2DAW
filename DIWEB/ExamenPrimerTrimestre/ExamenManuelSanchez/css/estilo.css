@@ -1,0 +1,35 @@
+/*
+Para utilizar las fuentes de google:
+font-family: 'Lato', sans-serif;
+font-family: 'Roboto', sans-serif;
+*/
+
+
+/*Reseteo de Margenes y Pading,uso de tipografía Lato y anchura del 90%*/
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+    width: 90%;
+}
+
+.barra-nav li {
+    font-family: 'Roboto', sans-serif;
+}
+
+.barra-nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.menu:hover,
+.menu-contacto:hover {
+    text-decoration: underline
+}
+
+.menu,
+.menu-contacto {
+    text-decoration: none;
+}
