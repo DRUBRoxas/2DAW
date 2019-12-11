@@ -7,6 +7,7 @@ if (isset($_POST['Enviar'])) {
     $sagricultor->GrabarActividades();
     $sagricultor->GrabarMaquinas();
 
+
     header('location:?menu=listaragricultores');
 }
 if (isset($_POST['cancelar'])) {

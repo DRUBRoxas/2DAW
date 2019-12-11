@@ -1,31 +1,68 @@
 <?php
 //Recogida de datos
-/*Sesion::iniciar();
+Sesion::iniciar();
 if (!Login::UsuarioEstaLogueado()) {
     header("location:?menu=login&returnurl=nuevamaquina");
 }
 $sagricultor = Sesion::leer("sagricultor");
 $valida = new Validacion();
-*/
+
 //Si he realizado un submit
 if (!empty($_POST)) {
-    $nombre_archivo = $_FILES['archivo']['name']; //Obteniendo el nombre del archivo
-    $ruta_destino = "../../ImagenesNoticias/";
+    $target_dir = "ImagenesNoticias/";
+    $target_file = $target_dir . basename($_FILES["archivo"]["name"]);
+    $uploadOk = 1;
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-    //$_SERVER['DOCUMENT_ROOT'] = la carpeta raiz donde esta el proyecto
-    $carpeta_destino = $_SERVER['DOCUMENT_ROOT'] . $ruta_destino;
+    $check = getimagesize($_FILES["archivo"]["tmp_name"]);
+    if ($check !== false) {
+        echo "File is an image - " . $check["mime"] . ".";
+        $uploadOk = 1;
+    } else {
+        echo "File is not an image.";
+        $uploadOk = 0;
+    }
+    if ($_FILES["archivo"]["size"] > 200000) {
+        echo "Sorry, your file is too large.";
+        $uploadOk = 0;
+    }
+    if (
+        $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+        && $imageFileType != "gif"
+    ) {
+        echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+        $uploadOk = 0;
+    }
 
-    //Movemos el archivo al directorio temp al directorio deseado.
+    if ($uploadOk == 0) {
+        echo "No se ha subido el Archivo";
+        // if everything is ok, try to upload file
+    } else {
+        if (move_uploaded_file($_FILES["archivo"]["tmp_name"], $target_file)) {
+            echo "El archivo " . basename($_FILES["archivo"]["name"]) . " has been uploaded.";
 
-    move_uploaded_file($_FILES['foto_perfil']['tmp_name'], $carpeta_destino . $nombre_archivo);
+            $titulo = $_POST['Titulo'];
+            $contenido = $_POST['contenido'];
+
+            $nuevaNoticia = new Noticia($titulo, $contenido, $target_file);
+            $nuevaNoticia->setEstado(Estado_Enum::MODIFICADO);
+            $sagricultor->updateNoticia($nuevaNoticia);
+            Sesion::escribir("sagricultor", $sagricultor);
+            $sagricultor->GrabarNoticias();
+        } else {
+            echo "Sorry, there was an error uploading your file.";
+        }
+    }
+    //lo demás
+
 }
+
 ?>
-<form action="" method="post">
-    Titulo:<input type="text" name="Titulo" class="form-control" required value=""><br>
+<form method="post" enctype=multipart/form-data> Titulo:<input type="text" name="Titulo" class="form-control" required value=""><br>
     Contenido:<textarea name="contenido" requerido class="form-control" value=""></textarea><br>
-    <input type='file' id="archivo" name='archivo'>
-    <br>
-    <input type="submit" value="Enviar" class="btn btn-primary">
+    <input name="archivo" type="file" class="form-control"> <br>
+
+    <input type="submit" value="Enviar" name="submit" class="btn btn-primary">
 
 </form>
 <br>

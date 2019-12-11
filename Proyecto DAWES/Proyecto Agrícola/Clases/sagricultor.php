@@ -9,6 +9,7 @@ class Sagricultor
     private $maquinas = [];
     private $parcelas = [];
     private $actividades = [];
+    private $noticias = [];
     //Constructor
     public function __construct(string $nombre, string $cif)
     {
@@ -18,6 +19,7 @@ class Sagricultor
         $this->getParcelas();
         $this->getActividades();
         $this->getMaquinas();
+        $this->getNoticias();
     }
 
 
@@ -352,6 +354,82 @@ class Sagricultor
                         "id_parcela" => $actividad->id_parcela
                     ]);
                     $actividad->setEstado(Estado_Enum::SIN_CAMBIOS);
+                    break;
+            }
+        }
+    }
+
+
+
+    //=========================================================//
+
+    //Noticias
+
+    public function addNoticia(Noticia $nuevaNoticia)
+    {
+        $nuevaNoticia->setEstado(Estado_Enum::NUEVO);
+        $this->noticias[$nuevaNoticia->getTitulo()] = $nuevaNoticia;
+    }
+
+    public function añadirNoticia(Noticia $nuevaNoticia)
+    {
+        $this->noticias[$nuevaNoticia->getTitulo()] = $nuevaNoticia;
+    }
+
+    public function getNoticias()
+    {
+        $bd = new GBD("127.0.0.1", "agricultor", "root", "");
+        $noticias = $bd->getAll("noticia");
+        foreach ($noticias as $noticia) {
+            $this->añadirNoticia($noticia);
+        }
+    }
+
+
+    public function removeNoticia(Noticia $borradoNoticia)
+    {
+        //unset($this->Actividades[$borradoactividad->getId_actividad()]);
+        $borradoNoticia->setEstado(Estado_Enum::BORRADO);
+    }
+
+
+    public function updateNoticia(Noticia $modificaNoticia)
+    {
+        if (isset($this->noticias[$modificaNoticia->getTitulo()])) {
+            $modificaNoticia->setEstado(Estado_Enum::MODIFICADO);
+            $this->noticias[$modificaNoticia->getTitulo()] = $modificaNoticia;
+        }
+    }
+
+    public function allNoticias()
+    {
+        return $this->noticias;
+    }
+
+    public function findNoticiaById(string $titulo)
+    {
+        return $this->noticias[$titulo];
+    }
+
+    public function GrabarNoticias()
+    {
+        $bd = new GBD("localhost", "agricultor", "root", "");
+        foreach ($this->noticias as $id => $noticia) {
+            switch ($noticia->getEstado()) {
+                case Estado_Enum::MODIFICADO:
+                    $bd->update("noticia", get_object_vars($noticia), [$noticia->getTitulo()]);
+                    $noticia->setEstado(Estado_Enum::SIN_CAMBIOS);
+                    break;
+                case Estado_Enum::BORRADO:
+                    $bd->delete("noticia", [$noticia->getTitulo()]);
+                    unset($this->noticias[$noticia->titulo]);
+                    break;
+                case Estado_Enum::NUEVO:
+                    $bd->add("noticia", [
+                        "Titulo" => $noticia->titulo, "contenido" => $noticia->contenido,
+                        "imagen" => $noticia->imagen
+                    ]);
+                    $noticia->setEstado(Estado_Enum::SIN_CAMBIOS);
                     break;
             }
         }

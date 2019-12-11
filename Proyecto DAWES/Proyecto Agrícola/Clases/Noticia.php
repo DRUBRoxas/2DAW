@@ -1,53 +1,55 @@
 <?php
 class Noticia
 {
-    private $titulo;
-    private $desarrollo;
-    private $imagen;
+    public $titulo;
+    public $contenido;
+    public $imagen;
+    public $estado;
 
-    public function __construct(string $titulo = '', string $desarrollo = '', string $imagen = '')
+    public function __construct(string $titulo = '', string $contenido = '', string $imagen = '')
     {
         $this->titulo = empty($titulo) ? $this->titulo : $titulo;
-        $this->desarrollo = empty($desarrollo) ? $this->desarrollo : $desarrollo;
+        $this->contenido = empty($contenido) ? $this->contenido : $contenido;
         $this->imagen = empty($imagen) ? $this->imagen : $imagen;
+        $estado = Estado_Enum::SIN_CAMBIOS;
     }
 
     /**
-     * Get the value of Titulo
+     * Get the value of titulo
      */
     public function getTitulo()
     {
-        return $this->Titulo;
+        return $this->titulo;
     }
 
     /**
-     * Set the value of Titulo
+     * Set the value of titulo
      *
      * @return  self
      */
-    public function setTitulo($Titulo)
+    public function setTitulo($titulo)
     {
-        $this->Titulo = $Titulo;
+        $this->titulo = $titulo;
 
         return $this;
     }
 
     /**
-     * Get the value of Desarrollo
+     * Get the value of contenido
      */
-    public function getDesarrollo()
+    public function getContenido()
     {
-        return $this->Desarrollo;
+        return $this->contenido;
     }
 
     /**
-     * Set the value of Desarrollo
+     * Set the value of contenido
      *
      * @return  self
      */
-    public function setDesarrollo($Desarrollo)
+    public function setContenido($contenido)
     {
-        $this->Desarrollo = $Desarrollo;
+        $this->contenido = $contenido;
 
         return $this;
     }
@@ -68,6 +70,26 @@ class Noticia
     public function setImagen($imagen)
     {
         $this->imagen = $imagen;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of estado
+     */
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+
+    /**
+     * Set the value of estado
+     *
+     * @return  self
+     */
+    public function setEstado($estado)
+    {
+        $this->estado = $estado;
 
         return $this;
     }

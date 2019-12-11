@@ -10,6 +10,9 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="?menu=mantenimiento">MANTENIMIENTO <span class="sr-only">(current)</span></a>
                 </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="?menu=listarnoticias">NOTICIAS <span class="sr-only">(current)</span></a>
+                </li>
             </ul>
             <?= Sesion::existe('login') ? "Hola bienvenido " . Sesion::leer('login') .
                 "<a href='?menu=cerrarsesion'>Cerrar sesión</a>" : ""; ?>

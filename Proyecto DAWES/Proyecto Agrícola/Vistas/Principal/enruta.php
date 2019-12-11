@@ -72,4 +72,16 @@ if (isset($_GET['menu'])) {
     if ($_GET['menu'] == "listadoalquiladas") {
         require_once './Vistas/Mantenimiento/listadoalquiladas.php';
     }
+    if ($_GET['menu'] == "listarnoticias") {
+        require_once './Vistas/Mantenimiento/listadonoticias.php';
+    }
+    if ($_GET['menu'] == "crearnoticia") {
+        require_once './Vistas/Mantenimiento/nuevanoticia.php';
+    }
+    if ($_GET['menu'] == "modificaNoticia") {
+        require_once './Vistas/Mantenimiento/modificarnoticia.php';
+    }
+    if ($_GET['menu'] == "borrarNoticia") {
+        require_once './Vistas/Mantenimiento/borranoticia.php';
+    }
 }
