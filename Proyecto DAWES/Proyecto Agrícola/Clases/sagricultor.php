@@ -15,14 +15,17 @@ class Sagricultor
     {
         $this->nombre = $nombre;
         $this->cif = $cif;
+        $this->getNoticias();
+        $this->RefrescarColecciones();
+    }
+
+    public function RefrescarColecciones()
+    {
         $this->CargarAgricultores();
         $this->getParcelas();
         $this->getActividades();
         $this->getMaquinas();
-        $this->getNoticias();
     }
-
-
     //Agricultores
 
 

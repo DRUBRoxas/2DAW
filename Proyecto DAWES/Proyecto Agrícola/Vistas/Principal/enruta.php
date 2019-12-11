@@ -84,4 +84,13 @@ if (isset($_GET['menu'])) {
     if ($_GET['menu'] == "borrarNoticia") {
         require_once './Vistas/Mantenimiento/borranoticia.php';
     }
+    if ($_GET['menu'] == "aemet") {
+        require_once './Vistas/Mantenimiento/aemet.php';
+    }
+    if ($_GET['menu'] == "todasactividades") {
+        require_once './Vistas/Mantenimiento/listaractividadesTodas.php';
+    }
+    if ($_GET['menu'] == "todasparcelas") {
+        require_once './Vistas/Mantenimiento/listarparcelasagricultorTodas.php';
+    }
 }

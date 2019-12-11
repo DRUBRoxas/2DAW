@@ -4,6 +4,7 @@ $sagricultor = Sesion::leer("sagricultor");
 $valida = new Validacion();
 $agricultor = $sagricultor->findagricultorById($_GET['dni']);
 $parcela = $sagricultor->findParcelaById($_GET['id']);
+
 $dni = $_GET['dni'];
 $id = $_GET['id'];
 $idAct = $_GET['idAct'];
@@ -17,11 +18,10 @@ if (!empty($_POST)) {
     $valida->CadenaRango('Descripcion', 100, 1);
     if ($valida->ValidacionPasada()) {
 */
-    $id_actividad = $_POST["id_actividad"];
     $titulo = $_POST["titulo"];
     $tipo = $_POST["tipo"];
     $Descripcion = $_POST["Descripcion"];
-    $nuevaActividad = new Actividad($id_actividad, $titulo, $tipo, $Descripcion, $id);
+    $nuevaActividad = new Actividad($idAct, $titulo, $tipo, $Descripcion, $id);
     $sagricultor->updateActividad($nuevaActividad);
     Sesion::escribir("sagricultor", $sagricultor);
     header("location:?menu=listaactividades&dni=$dni&id=$id");
@@ -39,8 +39,7 @@ if (isset($_POST['cancelar'])) {
 
 ?>
 <form action="" method="post">
-    Id Actividad:<input type="text" name="id_actividad" class="form-control" value="<?= $valida->getValor('id_actividad') ?>"><br>
-    <?= $valida->ImprimirError('id_actividad') ?>
+
     titulo:<input type="text" name="titulo" class="form-control" value="<?= $valida->getValor('titulo') ?>"><br>
     <?= $valida->ImprimirError('titulo') ?>
     tipo:<input type="text" name="tipo" class="form-control" value="<?= $valida->getValor('tipo') ?>"><br>

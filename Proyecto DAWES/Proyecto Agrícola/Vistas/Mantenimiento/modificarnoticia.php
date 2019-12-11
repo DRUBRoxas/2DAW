@@ -17,20 +17,20 @@ if (!empty($_POST)) {
     $sagricultor->updateNoticia($nuevaNoticia);
     Sesion::escribir("sagricultor", $sagricultor);
     $sagricultor->GrabarNoticias();
-}
-if (isset($_POST['cancelar'])) {
+} else if (isset($_POST['cancelar'])) {
     header("location:?menu=listarnoticias");
 } else {
     $_POST['Titulo'] = $noticias->getTitulo();
-    $_POST['contenido'] = $noticias->getContenido();
+    $_POST['Contenido'] = $noticias->getContenido();
 }
 ?>
-<form method="post" enctype=multipart/form-data> Titulo:<input type="text" name="Titulo" class="form-control" required value=""><br>
-    Contenido:<textarea name="contenido" requerido class="form-control" value=""></textarea><br>
+<form method="post" enctype=multipart/form-data> Titulo:<input type="text" name="Titulo" class="form-control" required value="<?= $valida->getValor('Titulo') ?>"><br>
+    <!--Contenido:<textarea name="contenido" requerido class="form-control" value="<?= $valida->getValor('Contenido') ?>"></textarea><br>-->
+    Contenido:<input type="text" name="contenido" requerido class="form-control" value="<?= $valida->getValor('Contenido') ?>"><br>
     <!--<input name="archivo" type="file" class="form-control"> <br>-->
 
     <input type="submit" value="Enviar" name="submit" class="btn btn-primary">
 
 </form>
 <br>
-<a href="?menu=alquilarmaquina">Volver a listado</a>
+<a href="?menu=listarnoticias">Volver a listado</a>

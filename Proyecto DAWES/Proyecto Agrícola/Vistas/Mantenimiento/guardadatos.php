@@ -6,6 +6,7 @@ if (isset($_POST['Enviar'])) {
     $sagricultor->GrabarParcelas();
     $sagricultor->GrabarActividades();
     $sagricultor->GrabarMaquinas();
+    $sagricultor->RefrescarColecciones();
 
 
     header('location:?menu=listaragricultores');

@@ -13,6 +13,18 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="?menu=listarnoticias">NOTICIAS <span class="sr-only">(current)</span></a>
                 </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="?menu=aemet">TIEMPO <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        LISTADOS
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="?menu=todasparcelas">PARCELAS</a>
+                        <a class="dropdown-item" href="?menu=todasactividades">ACTIVIDADES</a>
+                    </div>
+                </li>
             </ul>
             <?= Sesion::existe('login') ? "Hola bienvenido " . Sesion::leer('login') .
                 "<a href='?menu=cerrarsesion'>Cerrar sesión</a>" : ""; ?>

@@ -46,7 +46,7 @@ if (!empty($_POST)) {
 
             $nuevaNoticia = new Noticia($titulo, $contenido, $target_file);
             $nuevaNoticia->setEstado(Estado_Enum::MODIFICADO);
-            $sagricultor->updateNoticia($nuevaNoticia);
+            $sagricultor->addNoticia($nuevaNoticia);
             Sesion::escribir("sagricultor", $sagricultor);
             $sagricultor->GrabarNoticias();
         } else {
@@ -66,4 +66,4 @@ if (!empty($_POST)) {
 
 </form>
 <br>
-<a href="?menu=alquilarmaquina">Volver a listado</a>
+<a href="?menu=listarnoticias">Volver a listado</a>

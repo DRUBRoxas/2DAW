@@ -4,6 +4,7 @@ $sagricultor = Sesion::leer("sagricultor");
 $valida = new Validacion();
 $dni = $_GET['dni'];
 $agricultor = $sagricultor->findagricultorById($_GET['dni']);
+
 //Si he realizado un submit
 if (!empty($_POST)) {
     //validamos los datos
@@ -18,7 +19,7 @@ if (!empty($_POST)) {
     //$valida->EnteroRango('numeroPoligono', 1);
     //valida el numero de olivos
     //$valida->EnteroRango('NumeroOlivos', 1);
-    $id_parcela = $_POST["id_parcela"];
+    $id_parcela = $_GET["id"];
     $nombre = $_POST["nombre"];
     $numeroParcela = $_POST["numeroParcela"];
     $numeroPoligono = $_POST["numeroPoligono"];
@@ -33,7 +34,6 @@ if (isset($_POST['cancelar'])) {
     header("location:?menu=listarparcelasagricultor&dni=$dni");
 } else {
     $Parcela = $sagricultor->findParcelaById($_GET['id']);
-    $_POST['id_parcela'] = $Parcela->getId_parcela();
     $_POST['nombre'] = $Parcela->getNombre();
     $_POST['numeroParcela'] = $Parcela->getNum_parcela();
     $_POST['numeroPoligono'] = $Parcela->getNum_poligono();
@@ -41,8 +41,6 @@ if (isset($_POST['cancelar'])) {
 }
 ?>
 <form action="" method="post">
-    Id Parcela:<input type="text" name="id_parcela" class="form-control" value="<?= $valida->getValor('id_parcela') ?>"><br>
-    <?= $valida->ImprimirError('id_parcela') ?>
     Nombre:<input type="text" name="nombre" class="form-control" value="<?= $valida->getValor('nombre') ?>"><br>
     <?= $valida->ImprimirError('nombre') ?>
     Numero Parcela:<input type="text" name="numeroParcela" class="form-control" value="<?= $valida->getValor('numeroParcela') ?>"><br>

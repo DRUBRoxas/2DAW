@@ -4,10 +4,10 @@ $sagricultor = Sesion::leer('sagricultor');
 if (isset($_POST['borrar'])) {
     $sagricultor->removeMaquina($sagricultor->findMaquinaById($_GET['codigo']));
     Sesion::escribir('sagricultor', $sagricultor);
-    header("location:?menu=alquilamaquinas");
+    header("location:?menu=alquilarmaquina");
 }
 if (isset($_POST['cancelar'])) {
-    header("location:?menu=alquilamaquina");
+    header("location:?menu=alquilarmaquina");
 }
 ?>
 

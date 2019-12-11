@@ -2,14 +2,13 @@
 Sesion::iniciar();
 $sagricultor = Sesion::leer("sagricultor");
 $valida = new Validacion();
+$agricultor = $sagricultor->findAgricultorById($_GET['dni']);
 
 
 //Si he realizado un submit
 if (!empty($_POST)) {
     //validamos los datos
     //validamos dni
-    $valida->Dni('dni');
-
     //valida el nombre, longitud minima de 3 y máxima de 20
     $valida->CadenaRango('nombre', 20, 3);
     //valida los apellidos Longitud máxima de 30
@@ -19,7 +18,7 @@ if (!empty($_POST)) {
 
     if ($valida->ValidacionPasada()) {
 
-        $dni = $_POST["dni"];
+        $dni = $_GET["dni"];
         $nombre = $_POST["nombre"];
         $apellidos = $_POST["apellidos"];
         $email = $_POST["email"];
@@ -35,7 +34,6 @@ if (isset($_POST['cancelar'])) {
     header("location:?menu=listaragricultores");
 } else {
     $agricultor = $sagricultor->findAgricultorById($_GET['dni']);
-    $_POST['dni'] = $agricultor->getDni();
     $_POST['nombre'] = $agricultor->getNombre();
     $_POST['apellidos'] = $agricultor->getApellidos();
     $_POST['email'] = $agricultor->getEmail();
@@ -43,8 +41,6 @@ if (isset($_POST['cancelar'])) {
 
 ?>
 <form action="" method="post">
-    DNI:<input type="text" name="dni" class="form-control" value="<?= $valida->getValor('dni') ?>"><br>
-    <?= $valida->ImprimirError('dni') ?>
     Nombre:<input type="text" name="nombre" class="form-control" value="<?= $valida->getValor('nombre') ?>"><br>
     <?= $valida->ImprimirError('nombre') ?>
     Apellidos:<input type="text" name="apellidos" class="form-control" value="<?= $valida->getValor('apellidos') ?>"><br>
