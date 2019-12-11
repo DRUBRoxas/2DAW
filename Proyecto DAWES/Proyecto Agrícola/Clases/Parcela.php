@@ -122,35 +122,6 @@ class Parcela
         return $this;
     }
 
-    public function addActividad(Actividad $nuevaAct)
-    {
-        $this->Actividades[$nuevaAct->getId_actividad()] = $nuevaAct;
-    }
-
-    public function AllActividades()
-    {
-        return $this->Actividades;
-    }
-
-
-    public function removeActividad(Actividad $borradoactividad)
-    {
-        unset($this->Actividades[$borradoactividad->getId_actividad()]);
-    }
-
-
-    public function updateActividad(Actividad $modificaactividad)
-    {
-        if (isset($this->Actividades[$modificaactividad->getId_actividad()])) {
-            $this->Actividades[$modificaactividad->getId_actividad()] = $modificaactividad;
-        }
-    }
-
-    public function findActividadById(string $id)
-    {
-        return $this->Actividades[$id];
-    }
-
     /**
      * Get the value of estado
      */

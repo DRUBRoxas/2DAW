@@ -3,7 +3,7 @@ Sesion::iniciar();
 $sagricultor = Sesion::leer("sagricultor");
 $valida = new Validacion();
 $agricultor = $sagricultor->findagricultorById($_GET['dni']);
-$parcela = $agricultor->findParcelaById($_GET['id']);
+$parcela = $sagricultor->findParcelaById($_GET['id']);
 $dniag = $_GET['dni'];
 $id = $_GET['id'];
 ?>
@@ -21,17 +21,19 @@ $id = $_GET['id'];
     <tbody>
         <?php
         //Bucle para recorrer colección de Parcelas
-        if ($parcela->allActividades() != null) {
-            foreach ($parcela->allActividades() as $idAct => $actividad) {
-                echo "<tr>";
-                echo "<td>" . $idAct . "</td>";
-                echo "<td>" . $actividad->getTitulo() . "</td>";
-                echo "<td>" . $actividad->getTipo() . "</td>";
-                echo "<td>" . $actividad->getDescripcion() . "</td>";
-                echo "<td><a href='?menu=borraactividad&id=$id&dni=$dniag&idAct=$idAct'>BORRAR</a>&nbsp;
-                 <a href='?menu=modificaactividad&id=$id&dni=$dniag&idAct=$idAct'>MODIFICAR</a>
-                 </td>";
-                echo "</tr>";
+        if ($sagricultor->allActividades() != null) {
+            foreach ($sagricultor->allActividades() as $idAct => $actividad) {
+                if ($actividad->getId_parcela() === $id) {
+                    echo "<tr>";
+                    echo "<td>" . $idAct . "</td>";
+                    echo "<td>" . $actividad->getTitulo() . "</td>";
+                    echo "<td>" . $actividad->getTipo() . "</td>";
+                    echo "<td>" . $actividad->getDescripcion() . "</td>";
+                    echo "<td><a href='?menu=borraactividad&id=$id&dni=$dniag&idAct=$idAct'>BORRAR</a>&nbsp;
+                     <a href='?menu=modificaactividad&id=$id&dni=$dniag&idAct=$idAct'>MODIFICAR</a>
+                     </td>";
+                    echo "</tr>";
+                }
             }
         }
         ?>
@@ -40,4 +42,5 @@ $id = $_GET['id'];
 </br>
 <?php
 echo "<a class='btn btn-primary' href='?menu=nuevaactividad&dni=$dniag&id=$id'>Crear Actividad</a>";
+echo "<a class='btn btn-primary' href='?menu=guardadatos'>Guardar Datos</a>";
 ?>

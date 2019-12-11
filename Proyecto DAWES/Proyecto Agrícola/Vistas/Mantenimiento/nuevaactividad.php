@@ -3,27 +3,27 @@ Sesion::iniciar();
 $sagricultor = Sesion::leer("sagricultor");
 $valida = new Validacion();
 $agricultor = $sagricultor->findagricultorById($_GET['dni']);
-$parcela = $agricultor->findParcelaById($_GET['id']);
+$parcela = $sagricultor->findParcelaById($_GET['id']);
 $dni = $_GET['dni'];
 $id = $_GET['id'];
 //Si he realizado un submit
 if (!empty($_POST)) {
     //validamos los datos
-
+    /*
     $valida->EnteroRango('id_actividad');
     $valida->CadenaRango('titulo', 45, 3);
     $valida->CadenaRango('tipo', 45, 3);
     $valida->CadenaRango('Descripcion', 100, 1);
     if ($valida->ValidacionPasada()) {
-
-        $id_actividad = $_POST["id_actividad"];
-        $titulo = $_POST["titulo"];
-        $tipo = $_POST["tipo"];
-        $Descripcion = $_POST["Descripcion"];
-        $nuevaActividad = new Actividad($id_actividad, $titulo, $tipo, $Descripcion);
-        $parcela->addActividad($nuevaActividad);
-        Sesion::escribir("sagricultor", $sagricultor);
-    }
+*/
+    $id_actividad = $_POST["id_actividad"];
+    $titulo = $_POST["titulo"];
+    $tipo = $_POST["tipo"];
+    $Descripcion = $_POST["Descripcion"];
+    $nuevaActividad = new Actividad($id_actividad, $titulo, $tipo, $Descripcion, $id);
+    $sagricultor->addActividad($nuevaActividad);
+    Sesion::escribir("sagricultor", $sagricultor);
+    //    }
 }
 ?>
 <form action="" method="post">

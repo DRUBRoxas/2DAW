@@ -2,20 +2,21 @@
 
 class Maquina
 {
-    private $codigo;
-    private $nombre;
-    private $precio_hora;
-    private  $estado;
-    private $fecha_compra;
+    public $codigo;
+    public $nombre;
+    public $precio_hora;
+    public $alquilada;
+    public $fecha_compra;
+    public $estado;
 
 
-    public function __construct(string $codigo, string $nombre, string $precio_hora, bool $estado, string $fecha_compra)
+    public function __construct(string $codigo = '', string $nombre = '', string $precio_hora = '', bool $alquilada = false, string $fecha_compra = '')
     {
-        $this->codigo = $codigo;
-        $this->nombre = $nombre;
-        $this->precio_hora = $precio_hora;
-        $this->estado = $estado;
-        $this->fecha_compra = $fecha_compra;
+        $this->codigo = empty($codigo) ? $this->codigo : $codigo;
+        $this->nombre = empty($nombre) ? $this->nombre : $nombre;
+        $this->precio_hora = empty($precio_hora) ? $this->precio_hora : $precio_hora;
+        $this->alquilada = empty($alquilada) ? $this->alquilada : $alquilada;
+        $this->fecha_compra = empty($fecha_compra) ? $this->fecha_compra : $fecha_compra;
     }
 
     /**
@@ -79,11 +80,11 @@ class Maquina
     }
 
     /**
-     * Get the value of estado
+     * Get the value of alquilada
      */
-    public function getEstado()
+    public function getalquilada()
     {
-        if ($this->estado == false) {
+        if ($this->alquilada == false) {
             return "Disponible";
         } else {
             return "Alquilado";
@@ -91,13 +92,13 @@ class Maquina
     }
 
     /**
-     * Set the value of estado
+     * Set the value of alquilada
      *
      * @return  self
      */
-    public function setEstado($estado)
+    public function setalquilada($alquilada)
     {
-        $this->estado = $estado;
+        $this->alquilada = $alquilada;
 
         return $this;
     }
@@ -118,6 +119,26 @@ class Maquina
     public function setFecha_compra($fecha_compra)
     {
         $this->fecha_compra = $fecha_compra;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of estado
+     */
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+
+    /**
+     * Set the value of estado
+     *
+     * @return  self
+     */
+    public function setEstado($estado)
+    {
+        $this->estado = $estado;
 
         return $this;
     }

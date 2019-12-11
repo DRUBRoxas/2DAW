@@ -2,13 +2,13 @@
 Sesion::iniciar();
 $sagricultor = Sesion::leer('sagricultor');
 $agricultor = $sagricultor->findagricultorById($_GET['dni']);
-$parcela = $agricultor->findParcelaById($_GET['id']);
+$parcela = $sagricultor->findParcelaById($_GET['id']);
 $dni = $_GET['dni'];
 $id = $_GET['id'];
 $idAct = $_GET['idAct'];
 
 if (isset($_POST['borrar'])) {
-    $parcela->removeActividad($parcela->findActividadById($_GET['idAct']));
+    $sagricultor->removeActividad($sagricultor->findActividadById($_GET['idAct']));
     Sesion::escribir('sagricultor', $sagricultor);
     header("location:?menu=listaactividades&dni=$dni&id=$id");
 }

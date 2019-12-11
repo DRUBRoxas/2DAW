@@ -5,9 +5,10 @@ class Sagricultor
     private $cif;
 
     //Propiedad que viene de la relación entre La empresa y Agricultor
-    private $agricultores;
-    private $maquinas;
-    private $parcelas;
+    private $agricultores = [];
+    private $maquinas = [];
+    private $parcelas = [];
+    private $actividades = [];
     //Constructor
     public function __construct(string $nombre, string $cif)
     {
@@ -15,6 +16,8 @@ class Sagricultor
         $this->cif = $cif;
         $this->CargarAgricultores();
         $this->getParcelas();
+        $this->getActividades();
+        $this->getMaquinas();
     }
 
 
@@ -124,9 +127,20 @@ class Sagricultor
 
     //Maquinas
 
+
+    public function getMaquinas()
+    {
+        $bd = new GBD("127.0.0.1", "agricultor", "root", "");
+        $maquinas = $bd->getAll("maquina");
+        foreach ($maquinas as $maquina) {
+            $this->añadirmaquina($maquina);
+        }
+    }
+
+
     public function alquilaMaquina(Maquina $alquilaMaquina)
     {
-        $alquilaMaquina->setEstado(true);
+        $alquilaMaquina->setAlquilada(true);
     }
 
     public function findMaquinaById(string $Codigo)
@@ -134,20 +148,27 @@ class Sagricultor
         return $this->maquinas[$Codigo];
     }
 
+    public function añadirMaquina(Maquina $nuevaMaquina)
+    {
+        $this->maquinas[$nuevaMaquina->getCodigo()] = $nuevaMaquina;
+    }
 
     public function addMaquina(Maquina $nuevaMaquina)
     {
+        $nuevaMaquina->setEstado(Estado_Enum::NUEVO);
         $this->maquinas[$nuevaMaquina->getCodigo()] = $nuevaMaquina;
     }
 
     public function removeMaquina(Maquina $borradoMaquina)
     {
-        unset($this->maquinas[$borradoMaquina->getCodigo()]);
+        //unset($this->maquinas[$borradoMaquina->getCodigo()]);
+        $borradoMaquina->setEstado(Estado_Enum::BORRADO);
     }
 
     public function updateMaquina(Maquina $modificaMaquina)
     {
         if (isset($this->maquinas[$modificaMaquina->getCodigo()])) {
+            $modificaMaquina->setEstado(Estado_Enum::MODIFICADO);
             $this->maquinas[$modificaMaquina->getCodigo()] = $modificaMaquina;
         }
     }
@@ -162,7 +183,30 @@ class Sagricultor
         return $this->maquinas;
     }
 
-
+    public function GrabarMaquinas()
+    {
+        $bd = new GBD("localhost", "agricultor", "root", "");
+        foreach ($this->maquinas as $id => $maquina) {
+            switch ($maquina->getEstado()) {
+                case Estado_Enum::MODIFICADO:
+                    $bd->update("maquina", get_object_vars($maquina), [$maquina->getcodigo()]);
+                    $maquina->setEstado(Estado_Enum::SIN_CAMBIOS);
+                    break;
+                case Estado_Enum::BORRADO:
+                    $bd->delete("maquina", [$maquina->getcodigo()]);
+                    unset($this->maquinas[$maquina->codigo]);
+                    break;
+                case Estado_Enum::NUEVO:
+                    $bd->add("maquina", [
+                        "codigo" => $maquina->codigo, "nombre" => $maquina->nombre,
+                        "precio_hora" => $maquina->precio_hora, "alquilada" => $maquina->getAlquilada(),
+                        "fecha_compra" => $maquina->fecha_compra, "estado" => $maquina->estado
+                    ]);
+                    $maquina->setEstado(Estado_Enum::SIN_CAMBIOS);
+                    break;
+            }
+        }
+    }
 
 
     //==========================================================================//
@@ -174,15 +218,7 @@ class Sagricultor
         $bd = new GBD("127.0.0.1", "agricultor", "root", "");
         $parcelas = $bd->getAll("parcela");
         foreach ($parcelas as $parcela) {
-            $this->addparcela($parcela);
-        }
-    }
-
-    private function CargarParcelas()
-    {
-        $datos = $this->getAgricultores();
-        foreach ($datos as $agricultor) {
-            $this->CargaAgricultor($agricultor);
+            $this->añadirparcela($parcela);
         }
     }
 
@@ -228,11 +264,11 @@ class Sagricultor
         foreach ($this->parcelas as $id => $parcela) {
             switch ($parcela->getEstado()) {
                 case Estado_Enum::MODIFICADO:
-                    $bd->update("parcela", get_object_vars($parcela), [$parcela->getId_parcela()]);
+                    $bd->update("parcela", get_object_vars($parcela), [$parcela->getId_parcela(), $parcela->getAgricultores_dni()]);
                     $parcela->setEstado(Estado_Enum::SIN_CAMBIOS);
                     break;
                 case Estado_Enum::BORRADO:
-                    $bd->delete("parcela", [$parcela->getId_parcela()]);
+                    $bd->delete("parcela", [$parcela->getId_parcela(), $parcela->getAgricultores_dni()]);
                     unset($this->parcelas[$parcela->id_parcela]);
                     break;
                 case Estado_Enum::NUEVO:
@@ -242,6 +278,80 @@ class Sagricultor
                         "Num_Olivos" => $parcela->Num_Olivos, "agricultores_dni" => $parcela->agricultores_dni
                     ]);
                     $parcela->setEstado(Estado_Enum::SIN_CAMBIOS);
+                    break;
+            }
+        }
+    }
+
+    //==============================================================//
+    //Actividades
+
+
+    public function addActividad(Actividad $nuevaAct)
+    {
+        $nuevaAct->setEstado(Estado_Enum::NUEVO);
+        $this->actividades[$nuevaAct->getId_actividad()] = $nuevaAct;
+    }
+    public function AñadirActividad(Actividad $nuevaAct)
+    {
+        $this->actividades[$nuevaAct->getId_actividad()] = $nuevaAct;
+    }
+
+    public function getActividades()
+    {
+        $bd = new GBD("127.0.0.1", "agricultor", "root", "");
+        $actividades = $bd->getAll("actividad");
+        foreach ($actividades as $actividad) {
+            $this->añadirActividad($actividad);
+        }
+    }
+
+
+    public function removeActividad(Actividad $borradoactividad)
+    {
+        //unset($this->Actividades[$borradoactividad->getId_actividad()]);
+        $borradoactividad->setEstado(Estado_Enum::BORRADO);
+    }
+
+
+    public function updateActividad(Actividad $modificaactividad)
+    {
+        if (isset($this->actividades[$modificaactividad->getId_actividad()])) {
+            $modificaactividad->setEstado(Estado_Enum::MODIFICADO);
+            $this->actividades[$modificaactividad->getId_actividad()] = $modificaactividad;
+        }
+    }
+
+    public function allActividades()
+    {
+        return $this->actividades;
+    }
+
+    public function findActividadById(string $id)
+    {
+        return $this->actividades[$id];
+    }
+
+    public function GrabarActividades()
+    {
+        $bd = new GBD("localhost", "agricultor", "root", "");
+        foreach ($this->actividades as $id => $actividad) {
+            switch ($actividad->getEstado()) {
+                case Estado_Enum::MODIFICADO:
+                    $bd->update("actividad", get_object_vars($actividad), [$actividad->getId_actividad(), $actividad->getId_parcela()]);
+                    $actividad->setEstado(Estado_Enum::SIN_CAMBIOS);
+                    break;
+                case Estado_Enum::BORRADO:
+                    $bd->delete("actividad", [$actividad->getId_actividad(), $actividad->getId_parcela()]);
+                    unset($this->actividades[$actividad->id_actividad]);
+                    break;
+                case Estado_Enum::NUEVO:
+                    $bd->add("actividad", [
+                        "id_actividad" => $actividad->id_actividad, "titulo" => $actividad->titulo,
+                        "tipo" => $actividad->tipo, "descripcion" => $actividad->descripcion,
+                        "id_parcela" => $actividad->id_parcela
+                    ]);
+                    $actividad->setEstado(Estado_Enum::SIN_CAMBIOS);
                     break;
             }
         }

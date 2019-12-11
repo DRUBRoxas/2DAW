@@ -1,11 +1,16 @@
 <?php
 class Noticia
 {
-    private $Titulo;
-    private $Desarrollo;
+    private $titulo;
+    private $desarrollo;
     private $imagen;
 
-
+    public function __construct(string $titulo = '', string $desarrollo = '', string $imagen = '')
+    {
+        $this->titulo = empty($titulo) ? $this->titulo : $titulo;
+        $this->desarrollo = empty($desarrollo) ? $this->desarrollo : $desarrollo;
+        $this->imagen = empty($imagen) ? $this->imagen : $imagen;
+    }
 
     /**
      * Get the value of Titulo

@@ -24,7 +24,7 @@ if (!empty($_POST)) {
         $precio_hora = $_POST["precio_hora"];
         $fecha_compra = $_POST["fecha_compra"];
         $nuevaMaquina = new Maquina($codigo, $nombre, $precio_hora, $estado, $fecha_compra);
-        $sagricultor->addMaquina($nuevaMaquina);
+        $sagricultor->updateMaquina($nuevaMaquina);
         Sesion::escribir("sagricultor", $sagricultor);
     }
 }

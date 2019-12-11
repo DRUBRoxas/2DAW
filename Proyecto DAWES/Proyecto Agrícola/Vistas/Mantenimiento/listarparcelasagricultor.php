@@ -45,4 +45,6 @@ $dniag = $_GET['dni'];
 </br>
 <?php
 echo "<a class='btn btn-primary' href='?menu=nuevaparcela&dni=$dniag'>Crear Parcela</a>";
+echo "<a class='btn btn-primary' href='?menu=guardadatos'>Guardar Datos</a>";
+
 ?>
