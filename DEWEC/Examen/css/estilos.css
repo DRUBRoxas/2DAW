@@ -1,0 +1,62 @@
+#dispensador{
+    position:relative;
+    width:800px;
+    height:600px;
+    border: 1px solid black;
+}
+#display{
+    position: relative;
+    background: black;
+    height: 80px;
+    color:red;
+    font-size: 40px;
+    text-align: right;
+    margin: 0px;;
+    padding-top: 20px;
+}
+#maquina{
+    position: relative;
+}
+#productos{
+    position:absolute;
+    top:25px;
+    left:25px;
+    width:600px;
+
+}
+#monedas{
+    position:absolute;
+    left:600px;
+    top: 25px;
+    width:100px;
+    padding:0;
+    margin:0;
+}
+#cajon{
+    position: absolute;
+    bottom: 0;
+    background: red;
+    height: 80px;
+    left:0;
+    right: 0;
+    color:white;
+    margin: 0px;;
+}
+.moneda{
+    position: relative;
+    margin: 0;
+    padding: 0;
+    height: 70px;
+    width: 70px;
+}
+
+.producto{
+    display: inline-block;
+    width:125px;
+    height: 125px;
+    border:1px solid black;
+    margin:5px;
+}
+.agotado{
+    border: 1px solid red;;
+}
