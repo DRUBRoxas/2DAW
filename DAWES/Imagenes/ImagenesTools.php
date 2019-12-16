@@ -24,10 +24,10 @@ class ImagenesTools
             case 'jpeg':
                 $imagen=imagecreatefromjpeg($imagefile);
                 //Metodo que cambia la escala
-                $imagen=self::Escala($imagen$porcentaje,$ancho,$alto);
+                $imagen=self::Escala($imagen,$porcentaje,$ancho,$alto);
                 imagejpeg($imagen,is_null($nuevonombre)?$imagefile:$nuevonombre);
                 break;
-            case 'bmp'
+            case 'bmp':
                 $imagen=imagecreatefrombmp($imagefile);
                 //Metodo que cambia la escala
                 $imagen=self::Escala($imagen,$porcentaje,$ancho,$alto);
