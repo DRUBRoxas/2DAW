@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PrincipalController!{% endblock %}
+
+{% block body %}
+<h1>HOLA ESTOY EN EL CUERRPO</h1>
+{% for planta in plantas %}
+    Nombre de la planta: {{planta}} <br>
+{% endfor %}
+{% endblock %}
