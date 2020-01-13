@@ -34,7 +34,7 @@ TresEnRaya.prototype.victoria=function(){
        (j[0][0]+j[1][1]+j[2][2])%3==0 ||
        (j[2][0]+j[1][1]+j[0][2])%3==0)
     {
-        if(this.turno==1)
+        if(this.turno===1)
         {
             this.ganador=this.p1;
         }

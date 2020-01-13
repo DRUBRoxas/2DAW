@@ -1,3 +1,3 @@
-$(document).ready(function () {
-    $("input[type=texto]");
+$(document).ready(function(){
+
 });
