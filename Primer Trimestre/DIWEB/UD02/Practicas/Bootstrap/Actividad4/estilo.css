@@ -1,4 +1,60 @@
+.rojo {
+  background-color: red;
+}
+.verde {
+  background-color: green;
+}
 .azul {
-  background-color: turquoise;
+  background-color: blue;
+}
+.aqua {
+  background-color: aqua;
+}
+.morado {
+  background-color: violet;
+}
+
+.gris {
+  background-color: gray;
+}
+
+.amarillo {
+  background-color: yellow;
+}
+
+div {
+  padding: 15px;
+  text-align: center;
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+div.izq {
+  text-align: left;
+}
+
+div.cabecera {
+  color: white;
+}
+
+.der {
+  float: right;
+}
+
+.borde {
+  border: 1px solid gray;
+}
+  
+.bor {
   border: 1px solid white;
+  color: white;
+}
+
+img {
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.pie {
+  width: 50px;
 }
