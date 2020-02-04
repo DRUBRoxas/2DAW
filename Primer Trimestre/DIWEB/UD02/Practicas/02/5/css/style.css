@@ -1,12 +1,30 @@
-@media screen{
-    header{
-        background-image: url("../imagenes/fondo_superior.jpg");
-        color: white;
-    }
-    .info{
-        text-align: right;
-    }
-    .logotipo{
-        text-align:  left;
-    }
+/*Estilos generales*/
+
+div{
+    height:100%;
 }
+*{
+    padding: 0;
+    margin: 0 auto 0 auto;
+    font-family: 'Open Sans', sans-serif;    
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 90%;
+}
+
+/* Header */
+.logotipo{
+    text-align: left;
+}
+
+.info{
+    text-align: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: large;
+}
+
+
