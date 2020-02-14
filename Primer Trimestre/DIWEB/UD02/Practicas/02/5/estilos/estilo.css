@@ -1,0 +1,245 @@
+/* ESTILOS GENERALES */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html, body{
+    height: 100%; 
+ }
+ html{
+     box-sizing: border-box;
+ }
+
+ body{
+     font-family: 'Open Sans', sans-serif;
+ }
+ .contenedor{
+    width: 90%;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+ /*header*/
+
+#contacto{
+    float: right; 
+    margin-top: 22px;
+}
+#contacto i {
+    color: #fff;
+    margin-right: 12px;
+    font-size: 1.20rem;
+}
+
+#logo{
+    float: left;
+}
+/* 1ª Caja */
+article > section:nth-child(1){
+    background-image: linear-gradient(to left top, rgba(55,185,30,0.83),rgba(25,59,240,0.83)), url(../images/fondo_superior.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center right;
+}
+#presentacion{
+    display: flex;
+    padding: 50px 0;
+}
+
+#info{
+    flex-basis: 60%;
+    padding: 0 1em 0 0;
+    flex-grow: 2;
+    color: #fff;
+}
+h1{
+    font-size: 2.8rem;
+    font-family: arial;
+    margin-bottom: 25px;
+}
+#info p{
+    margin-bottom: 33px;
+    line-height: 1.65;
+}
+#info i{
+    border: 1px solid;
+    border-radius: 50%;
+    padding: 5px;
+    background-color: #fff;
+    color: #008000;
+}
+#formulario{
+    flex-basis: 30%;
+    background-color: rgba(0,0,0,0.8);
+    padding: 20px 1em;
+    color:#fff;
+}
+#formulario h2{
+    font-size: 1.4rem;
+    margin-bottom: 40px;
+}
+input {
+    width: 100%;
+}
+input[type="text"], input[type="email"]{ 
+    height: 45px;
+    padding: 0 1em;
+    margin: 5px 0;
+}
+input[type="button"]{
+    border: none;
+    background-color: #008000;
+    color:#fff;
+    padding: 10px 1em;
+    margin: 25px auto;
+    font-size: 1.2em;
+}
+small a{
+    color: #fff;
+}
+
+/* Sección 2 */
+article>section:nth-child(2){
+    padding: 60px 0;
+}
+#paginas{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+#paginas i{
+    color:#13a3db;
+    font-size: 2.5rem;
+    border: 1px solid;
+    border-radius: 50%;
+    padding: 48px 0;
+    width:140px;
+    height: 140px;
+    margin-bottom: 35px;
+}
+.pagina p{
+    font-size: 1.10rem;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+/* Sección 3 */
+article > section:nth-child(3){
+    background-color: #f6f9fd;
+    padding: 40px 0;
+}
+#video{
+    display: flex;
+}
+#video div{
+    flex-basis: 60%;
+}
+h2{
+    margin-bottom: 20px;
+}
+#video a{
+    display: inline-block;
+    background-color: #008000;
+    color: #fff;
+    padding: 12px 10em;
+    text-decoration: none;
+    margin: 25px 0;
+}
+video{
+    flex-basis: 40%;    /* ver que hace*/
+    width: 40%;
+    align-self: flex-start; /* ver que hace*/
+}
+/* Sección 4 */
+article > section:nth-child(4){
+    padding: 60px 0 0;
+    text-align: center;
+}
+#instructores{
+    display: flex;
+    margin: 50px auto;
+}
+.instructor{
+    margin: 20px 0.5em;
+    box-shadow: 2px 5px 15px #ccc9c9;
+    padding-bottom: 35px;
+}
+
+.instructor p{
+    font-size: 0.9rem;
+    padding: 12px 2em;
+}
+.instructor i{
+    font-size: 1.5rem;
+    color: #107ba7;
+    margin: 0 0.2em;
+}
+
+.instructor img{
+    width: 100%;
+    margin-bottom: 20px;
+}
+/* Sección 5 */
+article > section:nth-child(5){
+    background-image: linear-gradient(to left top, rgba(16, 123, 167, 0.8),rgba(16, 123, 167, 0.8)), url(../images/fondo_inferior.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center right
+}
+#extrainfo{
+    display: flex;
+    flex-flow: column wrap;
+    height: 100%;
+    min-height: 330px;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+#masinfo h2{
+    margin-bottom: 0;
+}
+#masinfo p{
+    padding: 20px 0;
+}
+#masinfo a{
+    display: block;
+    background-color: #37b81e;
+    color:#fff;
+    text-decoration: none;
+    padding: 12px 2em;
+}
+#masinfo a:hover{
+    background-color: #358424;
+    transition: all 1s;
+}
+/* Pie */
+footer{
+    background-color: #2c2a2a;
+    padding: 20px 0;
+}
+#pie{
+    overflow: hidden; 
+}
+.nav{
+    float: left;
+}
+.nav li{
+    display: inline-block;
+    font-size: 0.8rem;
+    padding: 12px 0 0;
+}
+.nav li a{
+    color: #c0bcbc;
+    text-decoration: none;
+    padding-right: 1.5em;
+}
+.nav li a:hover{
+    text-decoration: underline;
+}
+.copy{
+    float: right;
+    color: #c0bcbc;
+    padding-top: 8px;
+}

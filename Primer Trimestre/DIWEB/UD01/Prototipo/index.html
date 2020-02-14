@@ -5,107 +5,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/estilo.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
     <title>Prototipo</title>
 </head>
 
 <body>
-    <header>
-        <table width="100% ">
-            <tr>
-                <td>
-                    <a href="index.html" target="_blank"><img src="./Imagenes/Logo.jpg" alt="logo" width="150" height="150"></a>
-                </td>
-                <td>
-                    <a href="noticias.html"><img src="./Imagenes/noticias.png" alt="noticias" width="50" height="50"></a>
-                </td>
-                <td>
-                    <a href="contacto.html"><img src="./Imagenes/contacto.png" alt="noticias" width="50" height="50"></a>
-                </td>
-                <td>
-                    <a href="satisfaccion.html""><img src="./Imagenes/satisfaccion.png" alt="noticias" width="50" height="50"></a>
-                </td>
-                <td>
-                    <a href="Catalogo.html">CATÁLOGO</a>
-                </td>
-                <td><a href="Conocenos.html">CONÓCENOS</a>
-                </td>
-                <TD>
-                    <a href="areausers.html">AREA USUARIOS</a>
-                </TD>
-                <td>
-                    <a href="Carrito.html"><img src="./Imagenes/Carrito.png" alt="Carro" width="50" height="50"></a>
-                </td>
-                <td>
-                    <input type="text" name="Buscador" placeholder="Busqueda">
-                    <input type="button" name="buscar" value="Buscar">
-                </td>
-                <td>
-                </td>
-            </tr>
-        </table>
+    <header id="header">
+		<a id="logo" href="#">
+			<span class="site-name">ManuWEB</span>
+			<span class="site-desc">Venta de Productos</span>
+		</a>
+		<nav>
+			<ul>
+				<li><a href="#">Inicio</a></li>
+				<li><a href="#">Acerca de</a></li>
+				<li><a href="#">Contacto</a></li>
+			</ul>
+		</nav>
     </header>
-    <table>
-        <tr>
-            <td>
-                <h2>Productos en Oferta:</h2>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <a href="ProductoAleatorio.html"><img src="./Imagenes/1.jpg" alt="1" width="100" height="100"></a>
-            </td>
-            <td>
-                <a href="ProductoAleatorio.html"><img src="./Imagenes/2.jpg" alt="2" width="100" height="100"></a>
-
-            </td>
-            <td>
-                <a href="ProductoAleatorio.html"><img src="./Imagenes/3.jpg" alt="3" width="100" height="100"></a>
-
-            </td>
-            <td>
-                <a href="ProductoAleatorio.html"><img src="./Imagenes/4.webp" alt="4" width="100" height="100"></a>
-
-            </td>
-            <td rowspan="10">
-                <a href="OfertaFlash.html"><img src="./Imagenes/5.jpg" alt="1" width="400" height="300"></a>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <h2>Productos Destacados:</h2>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <a href="ProductoAleatorio.html"><img src="./Imagenes/1.jpg" alt="1" width="100" height="100"></a>
-            </td>
-            <td>
-                <a href="ProductoAleatorio.html"><img src="./Imagenes/2.jpg" alt="2" width="100" height="100"></a>
-            </td>
-            <td>
-                <a href="ProductoAleatorio.html"><img src="./Imagenes/3.jpg" alt="3" width="100" height="100"></a>
-            </td>
-            <td>
-                <a href="ProductoAleatorio.html"><img src="./Imagenes/4.webp" alt="4" width="100" height="100"></a>
-            </td>
-        </tr>
-    </table>
+    <br>
+    <main>
+        <h2>Compra nuestros productos</h2>
+        <div id="productos" class="contenedor">
+            <div class="producto">
+                <img src="imagenes/1.jpg">
+                <h1>Ratchet and Clank</h1>
+                <p>PS4</p>
+                
+            </div>
+            <div class="producto">
+                <img src="imagenes/2.jpg">
+                <h1>Sekiro</h1>
+                <p>PS4</p>
+                
+            </div>
+            <div class="producto">
+                <img src="imagenes/3.jpg">
+                <h1>Battlefield V</h1>
+                <p>PS4</p>
+                
+            </div>
+            <div class="producto">
+                <img src="imagenes/4.jpg">
+                <h1>Days Gone</h1>
+                <p>PS4</p>
+                
+            </div>
+        </div>
+    </main>
     <footer>
-        <hr>
-        <table>
-            <tr>
-                <td>PhantomT S.L</td>
-                <td> &nbsp;&nbsp;&nbsp;&nbsp;<a href="envio.html">Sobre el Envío</a>
-                </td>
-            </tr>
-            <tr>
-                <td>Calle Falsa 123</td>
-                <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="pago.html"> Métodos de Pago</a></td>
-            </tr>
-            <tr>
-                <td>3ºDerecha</td>
-            </tr>
-        </table>
+        <div id="pie" class="contenedor">
+            <ul class="nav">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Acerca de</a></li>
+                <li><a href="#">Política de privacidad</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+            <div class="copy">
+                <small>&copy; Derechos reservados.</small>
+            </div>
+        </div>
     </footer>
 </body>
 

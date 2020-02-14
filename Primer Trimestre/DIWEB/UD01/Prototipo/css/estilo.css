@@ -1,0 +1,163 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Helvetica, Arial, sans-serif;
+  color: #666;
+  background: #f2f2f2;
+  font-size: 1em;
+  line-height: 1.5em;
+  padding-top: 80px;
+  background-image: url(../Imagenes/fondo.jpg);
+}
+
+h1 {
+  font-size: 2.3em;
+  line-height: 1.3em;
+  margin: 15px 0;
+  text-align: center;
+  font-weight: 300;
+  font-family: 'Roboto', sans-serif;
+}
+
+p {
+  margin: 0 0 1.5em 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+#header {
+  background: #333;
+  color: white;
+  height: 80px;
+
+  width: 100%; 
+	left: 0; 
+	top: 0; 
+    position: fixed;
+} 
+#header a {
+  color: white;
+}
+
+/*
+ * Logo
+ */
+#logo {
+  float: left;
+  padding: 15px 0 0 20px;
+  text-decoration: none;
+}
+#logo:hover {
+  color: #0b76a6;
+}
+
+#logo .site-name {
+  display: block;
+  font-weight: 700;
+  font-size: 1.2em;
+}
+
+#logo .site-desc {
+  display: block;
+  font-weight: 300;
+  font-size: 0.8em;
+  color: #999;
+}
+
+/*
+ * Navegación
+ */
+nav {
+  float: right;
+}
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  padding-right: 20px;
+}
+
+nav ul li {
+  display: inline-block;
+  line-height: 80px;
+}
+
+nav ul li a {
+  display: block;
+  padding: 0 10px;
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  background: #0b76a6;
+}
+
+#productos{
+    display: flex;
+    margin: 50px auto;
+}
+.producto{
+    margin: 20px 0.5em;
+    box-shadow: 2px 5px 15px #ccc9c9;
+    padding-bottom: 35px;
+    border-radius: 6px;
+    background-color: white;
+}
+.producto:hover {
+    box-shadow: 0 -5px 15px #dad8d8, 0 8px 15px #dad8d8;
+    transition: all 0.5s;
+}
+
+.producto p{
+    font-size: 0.9rem;
+    padding: 12px 2em;
+}
+.producto i{
+    font-size: 1.5rem;
+    color: #107ba7;
+    margin: 0 0.2em;
+}
+
+.producto img{
+    width: 500px;
+    margin-bottom: 20px;
+    height: 400px;
+}
+.contenedor{
+    width: 90%;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+footer{
+    background-color: blue;
+    background-image: linear-gradient(to bottom right, red, yellow);
+    padding: 20px 0;
+}
+#pie{
+    overflow: hidden; 
+}
+.nav{
+    float: left;
+}
+.nav li{
+    display: inline-block;
+    font-size: 0.8rem;
+    padding: 12px 0 0;
+}
+.nav li a{
+    color: #c0bcbc;
+    text-decoration: none;
+    padding-right: 1.5em;
+}
+.nav li a:hover{
+    text-decoration: underline;
+}
+.copy{
+    float: right;
+    color: #c0bcbc;
+    padding-top: 8px;
+}
