@@ -1,0 +1,47 @@
+
+#textomov {
+  position: relative;
+  animation-name: movtexto;
+  animation-duration: 4s;
+  font-size: 6em;
+}
+
+@keyframes movtexto {
+  0%   {left:130%; top:130%;}
+  100% {left:0px; top:0px;}
+}
+
+#cambiatam {
+    position: relative;
+    animation-name: aumtexto;
+    animation-duration: 4s;
+    font-size: 2em;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+
+  }
+  
+  @keyframes aumtexto {
+    0%   {font-size: 2em; left:0px; top:0px;}
+    50%  {font-size: 6em; left:0px; top:200px;}
+    100% {font-size: 2em; left:0px; top:0px;}
+  }
+
+  #otro {
+    font-size:2em;
+    position: relative;
+    animation-name: movimiento;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+  
+  @keyframes movimiento {
+    0%   {left:0px; top:0px;}
+    25%  {left:200px; top:0px;}
+    50%  {left:200px; top:200px;}
+    75%  {left:0px; top:200px;}
+    100% {left:0px; top:0px;}
+  }
