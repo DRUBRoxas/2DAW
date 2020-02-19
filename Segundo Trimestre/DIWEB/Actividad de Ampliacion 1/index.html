@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/d5893ca20e.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <ul class="list-group">
+        <li id="despegues" class="list-group-item" ondrop="drop(event)" ondragover="allowDrop(event)">Numero de vuelos despegados: <div id="contvuelo"></div></li>
+        <li id="aterrizajes" class="list-group-item" ondrop="drop(event)" ondragover="allowDrop(event)">numero de vuelos aterrizados: <div id="contaterr"></div></li>
+        <li class="list-group-item"> <i id="botondesp" draggable="true" ondragstart="drag(event)" class="fas fa-plane-departure"></i></li>
+        <li class="list-group-item"> <i id="botonaterr" draggable="true" ondragstart="drag(event)" class="fas fa-plane-arrival"></i></li>
+        <li id="borrar" class="list-group-item" ondrop="drop(event)" ondragover="allowDrop(event)"> <i id="borrar" class="fas fa-trash-alt"></i></li>
+      </ul>
+</body>
+
+<script>
+    var ContadorDespegue=0;
+    var ContadorAterrizaje=0;
+    var accion=null;
+    var lugardrop=null;
+    var contvuelo=document.getElementById("contvuelo");
+    var contaterr=document.getElementById("contaterr");
+    function allowDrop(ev) {
+    ev.preventDefault();
+  }
+  
+  function drag(ev) {
+    ev.dataTransfer.setData("tipo",ev.target.id);
+    accion=ev.target.id;
+  }
+
+  function drop(ev) {
+    ev.preventDefault();
+    lugardrop=ev.target.id;
+    if(ev.target.id=="borrar")
+    {
+        if(accion=="botondesp")
+        {
+          if(ContadorDespegue==0)
+          {
+            alert("No puedes eliminar vuelos no existentes");
+          }
+          else
+          {
+            ContadorDespegue=ContadorDespegue-1;
+          } 
+        }
+        if(accion=="botonaterr")
+        {
+          if(ContadorAterrizaje==0)
+          {
+            alert("No puedes eliminar vuelos no existentes");
+          }
+          else
+          {
+            ContadorAterrizaje=ContadorAterrizaje-1;
+          } 
+        }
+    }
+    else
+    {
+      if(accion=="botondesp")
+        {
+            ContadorDespegue=ContadorDespegue+1;
+        }
+        if(accion=="botonaterr")
+        {
+            ContadorAterrizaje=ContadorAterrizaje+1;
+        }
+    } 
+
+    contvuelo.innerHTML=ContadorDespegue;
+    contaterr.innerHTML=ContadorAterrizaje;
+}
+</script>
+</html>
